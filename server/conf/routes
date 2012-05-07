@@ -4,6 +4,7 @@
 
 # Home page
 GET		/									controllers.Application.index()
+POST	/listBabySitters					controllers.Application.listAvailableBabySitters(f ?= "")
 GET     /xpresscare/1.0/sitter              controllers.Application.getSitter()
 POST    /xpresscare/1.0/sitter              controllers.Application.requestSitter()
 

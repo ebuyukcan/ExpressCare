@@ -1,0 +1,19 @@
+@(message: String)
+
+@main("Search for your available babysitters") {
+    
+	<h1>Search for some remedy</h1>
+
+@helper.form(action = routes.Application.listAvailableBabySitters()) {
+    <label for="where">Where?</label>
+	<input type="text" id="where" name="where" />
+	<label for="start">When to start?</label>
+	<input type="text" id="start" name="start" />
+	<label for="end">When to end?</label>
+	<input type="text" id="end" name="end" />
+	
+	<input type="submit" name="submit" value="search"/>
+}	
+    
+}
+

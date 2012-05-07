@@ -34,7 +34,7 @@ server/*.iml
 server/*.ipr
 server/*.iws
 server/atlassian-ide-plugin.xml
-/server/conf/evolutions/
+/server/conf/evolutions/default/1.sql
 /server/project/project/
 
 # modules/: exclude except for core modules

@@ -1,0 +1,14 @@
+@(babysitters: List[BabySitter])
+
+@main("List of babysitters") {
+    
+	<h1>Search for some remedy</h1>
+
+@for(sitter <- babysitters) {
+	<h1>@sitter.firstName</h1>
+	
+	
+}
+    
+}
+

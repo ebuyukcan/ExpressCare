@@ -58,16 +58,18 @@ public class BabySitter extends Model {
      * @param order Sort order (either or asc or desc)
      * @param filter Filter applied on the name column
      */
-    public static Page<BabySitter> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static Page<BabySitter> page(int pageSize, String filter) {
         return 
-            find.where()
-                .ilike("firstName", "%" + filter + "%")
-                .orderBy(sortBy + " " + order)
+	        find.where().ilike("firstName", "%" + filter + "%").findPagingList(100).getPage(0);
+//            find.where()
+//                .ilike("firstName", "%" + filter + "%")
+//                .orderBy(sortBy + " " + order)
 //                .fetch("company")
-                .findPagingList(pageSize)
-                .getPage(page);
+//                .findPagingList(pageSize)
+//                .getPage(page);
     }
-/*
+
+
 	public static List<BabySitter> all() {
 	  return find.all();
 	}
@@ -79,6 +81,6 @@ public class BabySitter extends Model {
 	public static void delete(Long id) {
 	  find.ref(id).delete();
 	}    
-*/
+
 }
 
