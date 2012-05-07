@@ -1,0 +1,18 @@
+/* 
+
+	My Custom Stylesheet 
+	
+*/
+
+/* First, pull in Bootstrap's stylesheet */
+@import url(assets/css/bootstrap.css);
+
+/* Now my custom styles */
+.row {
+	padding: 20px 0;
+}
+
+/* media-grid hover */
+.media-grid a:hover {
+	border-color: #ddd;
+}
