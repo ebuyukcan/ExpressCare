@@ -30,6 +30,20 @@ public class BabySitter extends Model {
     @Formats.DateTime(pattern="yyyy-MM-dd")
     public Date birthday;
     
+    public String video;
+    
+    public String basicInfo;
+    
+    public String description;
+    
+    public List<String> parentRecommendations;
+    
+    public List<String> sitterRecommendations;
+    
+    public List<String> friends;
+    
+    public String location;
+    
     /**
      * Generic query helper for entity Computer with id Long
      */
