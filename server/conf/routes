@@ -3,6 +3,7 @@
 # ~~~~
 
 # Home page
+GET		/									controllers.Application.index()
 GET     /xpresscare/1.0/sitter              controllers.Application.getSitter()
 POST    /xpresscare/1.0/sitter              controllers.Application.requestSitter()
 
