@@ -73,7 +73,7 @@ public class BabySitter extends Model {
      * @param order Sort order (either or asc or desc)
      * @param filter Filter applied on the name column
      */
-    public static List<BabySitter> find(String where, Date start, Date end) {
+    public static List<BabySitter> find(double latitude, double longitude, Date start, Date end) {
 // Deprecated stuff. Do these again if you have time...
     	Timestamp startTs = new Timestamp(start.getTime());
     	Timestamp endTs = new Timestamp(end.getTime());
