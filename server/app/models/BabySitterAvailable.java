@@ -35,7 +35,30 @@ public class BabySitterAvailable extends Model {
     /**
      * Generic query helper for entity Computer with id Long
      */
-    public static Finder<Long,BabySitterAvailable> find = new Finder<Long,BabySitterAvailable>(Long.class, BabySitterAvailable.class); 
+    public static Finder<Long,BabySitterAvailable> find = new Finder<Long,BabySitterAvailable>(Long.class, BabySitterAvailable.class);
+    
+    
+    /**
+     * Marks a babysitter as requested for that time period
+     * @param id Unique id of the available period
+     */
+    public static void setRequested(String id) {
+        BabySitterAvailable availability = find.byId(Long.parseLong(id));
+        availability.requested = true;
+        availability.save();
+        System.out.println("requested= " + availability.requested);
+    }
+    
+    /**
+     * Marks a babysitter as agreed for that time period
+     * @param id Unique id of the available period
+     */
+    public static void setAgreed(String id) {
+        BabySitterAvailable availability = find.byId(Long.parseLong(id));
+        availability.agreed = true;
+        availability.save();
+        System.out.println("agreed= " + availability.agreed);
+    }
     
 }
 

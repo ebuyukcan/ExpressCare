@@ -8,7 +8,8 @@ GET		/babysitter							controllers.Application.getBabysitter(id: String)
 GET 	/addNewBabysitter					controllers.Application.addNewBabysitter()
 POST	/babysitter							controllers.Application.addBabysitter()
 GET		/listBabySitters					controllers.Application.listAvailableBabySitters(where ?= "", start ?= "", end ?= "")
-POST    /xpresscare/1.0/sitter              controllers.Application.requestSitter()
+POST    /request				            controllers.Application.requestSitter()
+POST    /agree					            controllers.Application.agreeSitter() 
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

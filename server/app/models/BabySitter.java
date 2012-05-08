@@ -53,6 +53,8 @@ public class BabySitter extends Model {
     
     public String location;
     
+    public String phone;
+    
     /**
      * Generic query helper for entity Computer with id Long
      */

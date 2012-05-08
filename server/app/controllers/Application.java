@@ -69,6 +69,15 @@ public class Application extends Controller
 
     public static Result requestSitter()
     {
+    	System.out.println("(String) request().body().asFormUrlEncoded().get(id)[0]= " + (String) request().body().asFormUrlEncoded().get("id")[0]);
+    	BabySitterAvailable.setRequested((String) request().body().asFormUrlEncoded().get("id")[0]);
+    	return ok(search.render("This is the default controller"));
+    }
+    
+    public static Result agreeSitter()
+    {
+    	System.out.println("(String) request().body().asFormUrlEncoded().get(id)[0]= " + (String) request().body().asFormUrlEncoded().get("id")[0]);
+    	BabySitterAvailable.setAgreed((String) request().body().asFormUrlEncoded().get("id")[0]);
     	return ok();
     }
 
