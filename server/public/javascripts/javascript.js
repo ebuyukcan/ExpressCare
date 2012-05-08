@@ -14,5 +14,9 @@ $(function() {
 		var gmarker = addresspickerMap.addresspicker( "marker");
 		gmarker.setVisible(true);
 		addresspickerMap.addresspicker( "updatePosition");
+	
+	/** Datepickers **/
+	$('#startTime').datetimepicker();
+	$('#endTime').datetimepicker();
 		
 	});
