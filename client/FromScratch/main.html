@@ -9,6 +9,8 @@
 	<script src="static/javascript/jquery-ui-1.8.7.min.js"></script>
 	<script src="static/javascript/jquery.ui.addresspicker.js"></script>
 	<script src="static/javascript/javascript.js"></script>
+    <script src="static/javascript/datetimepicker.js"> </script>
+    
 </head>
 <body> 
 	<div class="container_12">
@@ -19,7 +21,7 @@
 			<a class="grid_2 push_1" href="#"> About </a>
 			<a class="grid_2 push_1" href="#"> Logout </a>
 		</div>
-	 
+	  
 			<form class="grid_6">
 				<div class='input'>
 					<label>Address : </label> <input id="addresspicker_map" />   <br/>
@@ -27,7 +29,7 @@
 					<label>Country:  </label> <input id="country" disabled=disabled> <br/>
 					<label>Lat:      </label> <input id="lat" disabled=disabled> <br/>
 					<label>Lng:      </label> <input id="lng" disabled=disabled> <br/>
-				</div class='input'>	
+				</div>	
 			</form>
 		  
 			<div id="map" class="grid_6"> </div> 
@@ -41,8 +43,16 @@
                     <input type="submit" value= "Request Babysitter">
 				
 			</form>
-			
 		 
 		
 	</div>
+    
+     
+     <form>
+     	<div class='input'>
+                    <input id="demo3" type="text" size="25"><a href="javascript:NewCal('demo3','ddmmyyyy',true,24)"><img src="static/img/cal.gif" width="16" height="16" border="0" alt="Pick a date">Starting date</a></div>
+        <div class='input'>
+                    <input id="demo4" type="text" size="25"><a href="javascript:NewCal('demo4','ddmmyyyy',true,24)"><img src="static/img/cal.gif" width="16" height="16" border="0" alt="Pick a date">Ending date</a></div>
+                    
+      </form>
 </body>
