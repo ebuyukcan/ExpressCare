@@ -3,23 +3,20 @@ package controllers;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import com.avaje.ebean.Ebean;
 
-import play.mvc.*;
-import play.*;
-
-import views.html.*;
-
-import java.io.IOException;
-import java.util.*;
-
-import models.*;
-
+import models.BabySitter;
+import models.BabySitterAvailable;
 import play.Logger;
+import play.mvc.Controller;
+import play.mvc.Result;
+import views.html.addBabysitter;
+import views.html.listBabySitters;
+import views.html.search;
+import views.html.viewBabysitter;
 public class Application extends Controller
 {
 
-	public static Result listAvailableBabySitters(String where, String start, String end) {
+	public static Result listAvailableBabySitters(double latitude, double longitude, String start, String end) {
 //		Ebean.getServer(null).getAdminLogging().setDebugGeneratedSql(true);
 		if (start.equals("")) start = "2012/05/04";
 		if (end.equals("")) end = "2012/05/10";
@@ -42,7 +39,7 @@ public class Application extends Controller
 			endDate = new Date();
 		}
 
-		Logger.debug("Got the parameter: " + where + ", start: " + startDate + ", end: " + endDate);
+		Logger.debug("Got the parameter: " + latitude +":" + longitude + ", start: " + startDate + ", end: " + endDate);
 		return ok(listBabySitters.render(BabySitter.find("here", startDate, endDate)));
 	}
 	
