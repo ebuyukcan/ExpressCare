@@ -5,11 +5,15 @@
 # Home page
 GET		/									controllers.Application.index()
 GET		/babysitter							controllers.Application.getBabysitter(id: String)
+
+# Adding babysitter profile is not currently in our scope, they will be removed
 GET 	/addNewBabysitter					controllers.Application.addNewBabysitter()
 POST	/babysitter							controllers.Application.addBabysitter()
+
 GET		/listBabySitters					controllers.Application.listAvailableBabySitters(where ?= "", start ?= "", end ?= "")
 POST    /request				            controllers.Application.requestSitter()
 POST    /agree					            controllers.Application.agreeSitter() 
+GET 	/contact							controllers.Application.contactBabysitter(sitterId: String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

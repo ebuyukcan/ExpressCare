@@ -66,17 +66,24 @@ public class Application extends Controller
 		//return ok();
     	return ok(viewBabysitter.render(BabySitter.getSitter(id)));
     }
+    
+    //TODO Ids for availabilty are also needed here
+    public static Result contactBabysitter(String sitterId)
+    {
+		//return ok();
+    	return ok(contactBabysitter.render(BabySitter.getSitter(sitterId)));
+    }
 
+    //TODO Ids for availabilty should be used here, not sitter ids!
     public static Result requestSitter()
     {
-    	System.out.println("(String) request().body().asFormUrlEncoded().get(id)[0]= " + (String) request().body().asFormUrlEncoded().get("id")[0]);
     	BabySitterAvailable.setRequested((String) request().body().asFormUrlEncoded().get("id")[0]);
     	return ok(search.render("This is the default controller"));
     }
     
+    //TODO Ids for availabilty should be used here, not sitter ids!
     public static Result agreeSitter()
     {
-    	System.out.println("(String) request().body().asFormUrlEncoded().get(id)[0]= " + (String) request().body().asFormUrlEncoded().get("id")[0]);
     	BabySitterAvailable.setAgreed((String) request().body().asFormUrlEncoded().get("id")[0]);
     	return ok();
     }

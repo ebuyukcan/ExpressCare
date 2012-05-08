@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import play.Logger;
 import play.data.format.Formats;
 import play.data.validation.Constraints;
+import play.data.validation.Constraints.Email;
 import play.db.ebean.Model;
 
 import com.avaje.ebean.Expr;
@@ -54,6 +55,9 @@ public class BabySitter extends Model {
     public String location;
     
     public String phone;
+    
+    @Email
+    public String email;
     
     /**
      * Generic query helper for entity Computer with id Long
