@@ -15,3 +15,4 @@ insert into baby_sitter_available (id,baby_sitter_id,start_time,end_time, reques
 # --- !Downs
 
 delete from baby_sitter;
+delete from baby_sitter_available;
