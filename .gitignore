@@ -20,6 +20,7 @@ server/framework/tests/test-application/db
 server/framework/play-*.jar
 server/framework/docs
 server/samples-and-tests/*/test-result/
+server/tmp/
 
 # IDE and editors
 *~
