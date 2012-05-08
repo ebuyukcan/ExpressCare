@@ -28,6 +28,10 @@ public class BabySitterAvailable extends Model {
     @Formats.DateTime(pattern="yyyy-MM-dd HH-mm-ss")
     public Date endTime;
     
+    public boolean requested;
+    
+    public boolean agreed;
+    
     /**
      * Generic query helper for entity Computer with id Long
      */
