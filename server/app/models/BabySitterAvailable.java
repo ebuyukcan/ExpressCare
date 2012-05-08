@@ -19,7 +19,6 @@ public class BabySitterAvailable extends Model {
 	@Id
 	public Long id;
 
-	// @OneToMany(mappedBy="BabySitterAvailable", cascade=CascadeType.ALL)
 	@ManyToOne
 	public BabySitter babySitter;
 
