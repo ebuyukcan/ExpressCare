@@ -1,26 +1,21 @@
 package controllers;
 
-import play.libs.Akka;
-import play.mvc.*;
-import play.*;
+import java.util.Date;
 
-import views.html.*;
+import models.BabySitter;
+import play.mvc.Controller;
+import play.mvc.Result;
+import views.html.listBabySitters;
+import views.html.search;
 
-import java.io.IOException;
-import java.util.*;
-
-import models.*;
+import com.avaje.ebean.Ebean;
 
 public class Application extends Controller
 {
 
 	public static Result listAvailableBabySitters(String filter) {
-		return ok(listBabySitters.render(BabySitter.all()));
-		/*
-            list.render(
-                BabySitter.page(10, filter),
-                filter
-            ));*/
+//		Ebean.getServer(null).getAdminLogging().setDebugGeneratedSql(true);
+		return ok(listBabySitters.render(BabySitter.find("here", new Date(), new Date())));
 	}
 
 	public static Result index()

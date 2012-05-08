@@ -1,13 +1,21 @@
 package models;
 
-import java.util.*;
-import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
-import play.db.ebean.*;
-import play.data.format.*;
-import play.data.validation.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
-import com.avaje.ebean.*;
+import play.Logger;
+import play.data.format.Formats;
+import play.data.validation.Constraints;
+import play.db.ebean.Model;
+
+import com.avaje.ebean.Expr;
 
 /**
  * Computer entity managed by Ebean
@@ -58,15 +66,20 @@ public class BabySitter extends Model {
      * @param order Sort order (either or asc or desc)
      * @param filter Filter applied on the name column
      */
-    public static Page<BabySitter> page(int pageSize, String filter) {
-        return 
-	        find.where().ilike("firstName", "%" + filter + "%").findPagingList(100).getPage(0);
-//            find.where()
-//                .ilike("firstName", "%" + filter + "%")
-//                .orderBy(sortBy + " " + order)
-//                .fetch("company")
-//                .findPagingList(pageSize)
-//                .getPage(page);
+    public static List<BabySitter> find(String where, Date start, Date end) {
+    	Timestamp startTs = new Timestamp(start.getTime());
+    	Timestamp endTs = new Timestamp(end.getTime());
+    	
+    	List<BabySitterAvailable> list = BabySitterAvailable.find.
+    			where(Expr.and(Expr.le("start_time", startTs.toString()), 
+    					Expr.ge("end_time", endTs.toString()))).findList();
+    	List<BabySitter> sitters = new ArrayList<BabySitter>();
+    	for (BabySitterAvailable bsa : list) {    		
+    		sitters.add(bsa.babySitter);
+    		Logger.debug("added " + bsa.babySitter.firstName);
+    	}
+    	
+    	return sitters;
     }
 
 
