@@ -1,4 +1,7 @@
-package controllers;
+package controllers
+
+import java.util.Date;
+import com.avaje.ebean.Ebean;
 
 import play.mvc.*;
 import play.*;
@@ -14,12 +17,8 @@ public class Application extends Controller
 {
 
 	public static Result listAvailableBabySitters(String filter) {
-		return ok(listBabySitters.render(BabySitter.all()));
-		/*
-            list.render(
-                BabySitter.page(10, filter),
-                filter
-            ));*/
+//		Ebean.getServer(null).getAdminLogging().setDebugGeneratedSql(true);
+		return ok(listBabySitters.render(BabySitter.find("here", new Date(), new Date())));
 	}
 	
 	public static Result addBabysitter()
@@ -47,5 +46,7 @@ public class Application extends Controller
     {
     	return ok();
     }
+
+
 
 }

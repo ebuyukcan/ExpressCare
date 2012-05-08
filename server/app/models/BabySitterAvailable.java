@@ -1,17 +1,18 @@
 package models;
 
-import java.util.*;
-import javax.persistence.*;
+import java.util.Date;
 
-import play.db.ebean.*;
-import play.data.format.*;
-import play.data.validation.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-import com.avaje.ebean.*;
+import play.data.format.Formats;
+import play.db.ebean.Model;
 
 /**
  * Computer entity managed by Ebean
  */
+@SuppressWarnings("serial")
 @Entity 
 public class BabySitterAvailable extends Model {
 
