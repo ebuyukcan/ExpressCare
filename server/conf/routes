@@ -4,12 +4,10 @@
 
 # Home page
 GET		/									controllers.Application.index()
-POST	/listBabySitters					controllers.Application.listAvailableBabySitters(f ?= "")
 GET		/babysitter							controllers.Application.getBabysitter(id: String)
 GET 	/addNewBabysitter					controllers.Application.addNewBabysitter()
 POST	/babysitter							controllers.Application.addBabysitter()
 GET		/listBabySitters					controllers.Application.listAvailableBabySitters(where ?= "", start ?= "", end ?= "")
-GET     /xpresscare/1.0/sitter              controllers.Application.getSitter()
 POST    /xpresscare/1.0/sitter              controllers.Application.requestSitter()
 
 # Map static resources from the /public folder to the /assets URL path
