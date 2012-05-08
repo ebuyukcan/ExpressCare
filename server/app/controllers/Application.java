@@ -53,7 +53,6 @@ public class Application extends Controller
 
 	public static Result index()
 	{
-		Logger.debug("at index");
 		return ok(search.render("This is the default controller"));
 	}
 	
