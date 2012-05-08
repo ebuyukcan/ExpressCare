@@ -1,6 +1,7 @@
 package models;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,6 +21,7 @@ import com.avaje.ebean.Expr;
 /**
  * Computer entity managed by Ebean
  */
+@SuppressWarnings("serial")
 @Entity 
 public class BabySitter extends Model {
 
@@ -67,12 +69,14 @@ public class BabySitter extends Model {
      * @param filter Filter applied on the name column
      */
     public static List<BabySitter> find(String where, Date start, Date end) {
+// Deprecated stuff. Do these again if you have time...
     	Timestamp startTs = new Timestamp(start.getTime());
     	Timestamp endTs = new Timestamp(end.getTime());
     	
     	List<BabySitterAvailable> list = BabySitterAvailable.find.
     			where(Expr.and(Expr.le("start_time", startTs.toString()), 
     					Expr.ge("end_time", endTs.toString()))).findList();
+    	// FIXME this should be done in the SQL query...
     	List<BabySitter> sitters = new ArrayList<BabySitter>();
     	for (BabySitterAvailable bsa : list) {    		
     		sitters.add(bsa.babySitter);
