@@ -67,8 +67,8 @@ public class Application extends Controller
     //TODO Ids for availabilty are also needed here
     public static Result contactBabysitter(String sitterId)
     {
-		//return ok();
-    	return ok(contactBabysitter.render(BabySitter.getSitter(sitterId)));
+		return ok();
+//    	return ok(contactBabysitter.render(BabySitter.getSitter(sitterId)));
     }
 
     //TODO Ids for availabilty should be used here, not sitter ids!
