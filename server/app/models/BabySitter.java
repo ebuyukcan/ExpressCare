@@ -68,6 +68,11 @@ public class BabySitter extends Model {
 //                .findPagingList(pageSize)
 //                .getPage(page);
     }
+    
+    public static BabySitter getSitter(String id) {
+        return 
+	        find.byId(Long.parseLong(id));
+    }
 
 
 	public static List<BabySitter> all() {

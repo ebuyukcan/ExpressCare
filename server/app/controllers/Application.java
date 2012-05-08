@@ -1,6 +1,5 @@
 package controllers;
 
-import play.libs.Akka;
 import play.mvc.*;
 import play.*;
 
@@ -22,15 +21,26 @@ public class Application extends Controller
                 filter
             ));*/
 	}
+	
+	public static Result addBabysitter()
+	{
+		return ok();
+	}
 
 	public static Result index()
 	{
 		return ok(search.render("This is the default controller"));
 	}
+	
+	public static Result addNewBabysitter()
+	{
+		return ok(addBabysitter.render("This is the default controller"));
+	}
     
-    public static Result getSitter()
+    public static Result getBabysitter(String id)
     {
-		return ok();
+		//return ok();
+    	return ok(viewBabysitter.render(BabySitter.getSitter(id)));
     }
 
     public static Result requestSitter()
