@@ -97,6 +97,7 @@ public class Application extends Controller
     
     public static Result contactBabysitterMobile(String sitterId)
     {
+    	return ok();
     }
 
     //TODO Ids for availability should be used here, not sitter ids!
