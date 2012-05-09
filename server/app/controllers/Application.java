@@ -71,9 +71,6 @@ public class Application extends Controller
 
 	public static Result index()
 	{
-		Parent p = Parent.find.all().get(0);
-		Logger.debug("List size: " + Parent.find.all().size());
-		Logger.debug("id: " + p.id + ", lat: " + p.lastLatitude + ", lon: " + p.lastLongitude);
 		// Get the first result, which is our test user's account.
 		return ok(search.render(Parent.find.all().get(0)));
 	}
