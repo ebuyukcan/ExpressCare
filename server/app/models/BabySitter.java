@@ -65,13 +65,7 @@ public class BabySitter extends Model {
     public static Finder<Long,BabySitter> find = new Finder<Long,BabySitter>(Long.class, BabySitter.class); 
     
     /**
-     * Return a page of computer
-     *
-     * @param page Page to display
-     * @param pageSize Number of computers per page
-     * @param sortBy Computer property used for sorting
-     * @param order Sort order (either or asc or desc)
-     * @param filter Filter applied on the name column
+     * Should the whole method be moved to the BabySitterAvailable?
      */
     public static List<BabySitterAvailable> find(double latitude, double longitude, Date start, Date end) {
     	// Deprecated stuff. Do these again if you have time...
@@ -82,12 +76,12 @@ public class BabySitter extends Model {
     			where(Expr.and(Expr.le("start_time", startTs.toString()), 
     					Expr.ge("end_time", endTs.toString()))).findList();
     	
-    	// FIXME this should be done in the SQL query...
-    	/*List<BabySitter> sitters = new ArrayList<BabySitter>();
-    	for (BabySitterAvailable bsa : list) {    		
-    		sitters.add(bsa.babySitter);
-    		Logger.debug("added " + bsa.babySitter.firstName);
-    	}*/
+    	for (BabySitterAvailable bsa : list) {
+    		// because lazy loading does not work from the templates, we have to cheat like this 
+    		// or create getters and setters? http://osdir.com/ml/play-framework/2012-02/msg01672.html
+    		String firstName = bsa.babySitter.firstName;
+    	}
+    	
     	return list;
     }
     

@@ -54,7 +54,7 @@ public class Application extends Controller
 		user.lastLongitude = longitude;
 		user.save();
 */
-		Logger.debug("Got the parameter: " + latitude +":" + longitude + ", start: " + startDate + ", end: " + endDate);
+		Logger.debug("Got the parameter: " + latitude +":" + longitude + ", start: " + startDate + ", end: " + endDate);		
 		return ok(listBabySitters.render(BabySitter.find(Double.parseDouble(latitude), Double.parseDouble(longitude), startDate, endDate)));
 	}
 	
