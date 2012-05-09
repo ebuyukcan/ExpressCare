@@ -2,20 +2,21 @@
 
 @main("Available babysitters") {
     
-	<h1>Available babysitters</h1>
+	<h1 class="grid_12">Available babysitters</h1>
 
-	
 	@for(sitter <- babysitters) {
 		
 		@helper.form(action = routes.Application.requestSitter()) {
-			<h1>@sitter.babySitter.firstName @sitter.babySitter.lastName</h1>
-			
-			<h2>Available from @sitter.startTime to @sitter.endTime</h2>
-			
-			<input type="hidden" id="id" name="id" value="@sitter.id" />
-			
-			<input type="submit" name="submit" value="Request"/>
-			
+			<div class="container_12">
+				<img class="grid_2" src="@routes.Assets.at("images/mugweb.jpg")" title="Reliable babysitters!" />
+				<h1 class="grid_10">@sitter.babySitter.firstName @sitter.babySitter.lastName</h1>
+				
+				<h2 class="grid_10">Available from @sitter.startTime to @sitter.endTime</h2>
+				
+				<input type="hidden" id="id" name="id" value="@sitter.id" />
+				
+				<input class="grid_1" type="submit" name="submit" value="Request"/>
+			</div>
 		}
 		
 	
