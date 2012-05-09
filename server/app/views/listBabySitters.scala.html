@@ -1,4 +1,4 @@
-@(babysitters: List[BabySitter])
+@(babysitters: List[BabySitterAvailable])
 
 @main("List of babysitters") {
     
@@ -8,7 +8,9 @@
 	@for(sitter <- babysitters) {
 		
 		@helper.form(action = routes.Application.requestSitter()) {
-			<h1>@sitter.firstName @sitter.lastName</h1>
+			<h1>@sitter.babySitter.firstName @sitter.babySitter.lastName</h1>
+			
+			<h2>Available from @sitter.startTime to @sitter.endTime</h2>
 			
 			<input type="hidden" id="id" name="id" value="@sitter.id" />
 			

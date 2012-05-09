@@ -73,7 +73,7 @@ public class BabySitter extends Model {
      * @param order Sort order (either or asc or desc)
      * @param filter Filter applied on the name column
      */
-    public static List<BabySitter> find(double latitude, double longitude, Date start, Date end) {
+    public static List<BabySitterAvailable> find(double latitude, double longitude, Date start, Date end) {
     	// Deprecated stuff. Do these again if you have time...
     	Timestamp startTs = new Timestamp(start.getTime());
     	Timestamp endTs = new Timestamp(end.getTime());
@@ -83,12 +83,12 @@ public class BabySitter extends Model {
     					Expr.ge("end_time", endTs.toString()))).findList();
     	
     	// FIXME this should be done in the SQL query...
-    	List<BabySitter> sitters = new ArrayList<BabySitter>();
+    	/*List<BabySitter> sitters = new ArrayList<BabySitter>();
     	for (BabySitterAvailable bsa : list) {    		
     		sitters.add(bsa.babySitter);
     		Logger.debug("added " + bsa.babySitter.firstName);
-    	}
-    	return sitters;
+    	}*/
+    	return list;
     }
     
     public static BabySitter getSitter(String id) {

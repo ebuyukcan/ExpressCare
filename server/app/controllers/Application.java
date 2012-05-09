@@ -97,7 +97,8 @@ public class Application extends Controller
     
     public static Result contactBabysitterMobile(String sitterId)
     {
-    	return ok();
+    	//return ok();
+    	return ok(contactBabysitterMobile.render(BabySitter.getSitter(sitterId)));
     }
 
     //TODO Ids for availability should be used here, not sitter ids!
