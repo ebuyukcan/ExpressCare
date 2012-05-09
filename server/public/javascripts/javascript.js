@@ -60,6 +60,7 @@ $(function() {
 	$('#startTime').datetimepicker({
 		hour: now.getHours() + startAheadHours,
 		firstDay: 1,
+		stepMinute: 15,
 
 	    onClose: function(dateText, inst) {
 	        var endDateTextBox = $('#endTime');
@@ -81,6 +82,7 @@ $(function() {
 	$('#endTime').datetimepicker({
 		hour: (now.getHours() + 4 < 24 ? now.getHours() + endAheadHours : 24 - now.getHours() + endAheadHours),
 		firstDay: 1,
+		stepMinute: 15,
 
 	    onClose: function(dateText, inst) {
 	        var startDateTextBox = $('#startTime');
