@@ -81,17 +81,5 @@ $(function() {
 	defaultEnd.setTime(defaultEnd.getTime() + endAheadHours*60*60*1000);
 	$("#startTime").datetimepicker('setDate', defaultStart);
 	$("#endTime").datetimepicker('setDate', defaultEnd);
-		
-	
-/*	$('#startTime').datetimepicker({
-		hour: now.getHours() + 2,
-		stepMinute: 15,
-		
-	});
-	$('#endTime').datetimepicker({
-		hour: now.getHours() + 6,
-		stepMinute: 15,
-		
-	});
-	*/	
+
 	});
