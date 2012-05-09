@@ -46,7 +46,7 @@ public class BabySitterAvailable extends Model {
         BabySitterAvailable availability = find.byId(Long.parseLong(id));
         availability.requested = true;
         availability.save();
-        System.out.println("requested= " + availability.requested);
+        //System.out.println("requested= " + availability.requested);
     }
     
     /**
@@ -57,7 +57,7 @@ public class BabySitterAvailable extends Model {
         BabySitterAvailable availability = find.byId(Long.parseLong(id));
         availability.agreed = true;
         availability.save();
-        System.out.println("agreed= " + availability.agreed);
+        //System.out.println("agreed= " + availability.agreed);
     }
     
 }

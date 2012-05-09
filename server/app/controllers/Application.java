@@ -9,10 +9,7 @@ import models.BabySitterAvailable;
 import play.Logger;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.addBabysitter;
-import views.html.listBabySitters;
-import views.html.search;
-import views.html.viewBabysitter;
+import views.html.*;
 public class Application extends Controller
 {
 
@@ -54,6 +51,12 @@ public class Application extends Controller
 		return ok(search.render("This is the default controller"));
 	}
 	
+	public static Result indexMobile()
+	{
+		//return ok();
+		return ok(searchMobile.render("This is the default controller"));
+	}
+	
 	public static Result addNewBabysitter()
 	{
 		return ok(addBabysitter.render("This is the default controller"));
@@ -65,22 +68,28 @@ public class Application extends Controller
     	return ok(viewBabysitter.render(BabySitter.getSitter(id)));
     }
     
-    //TODO Ids for availabilty are also needed here
+    //TODO Ids for availability are also needed here
     public static Result contactBabysitter(String sitterId)
     {
-		return ok();
-//    	return ok(contactBabysitter.render(BabySitter.getSitter(sitterId)));
+//		return ok();
+    	return ok(contactBabysitter.render(BabySitter.getSitter(sitterId)));
+    }
+    
+    public static Result contactBabysitterMobile(String sitterId)
+    {
+//		return ok();
+    	return ok(contactBabysitterMobile.render(BabySitter.getSitter(sitterId)));
     }
 
-    //TODO Ids for availabilty should be used here, not sitter ids!
+    //TODO Ids for availability should be used here, not sitter ids!
     public static Result requestSitter()
     {
     	BabySitterAvailable.setRequested((String) request().body().asFormUrlEncoded().get("id")[0]);
     	// return ok(search.render("This is the default controller"));
-    	return redirect("/");
+    	return redirect("/listBabySitters");
     }
     
-    //TODO Ids for availabilty should be used here, not sitter ids!
+    //TODO Ids for availability should be used here, not sitter ids!
     public static Result agreeSitter()
     {
     	BabySitterAvailable.setAgreed((String) request().body().asFormUrlEncoded().get("id")[0]);
