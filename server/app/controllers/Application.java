@@ -3,9 +3,13 @@ package controllers;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+
+import com.avaje.ebean.Ebean;
 
 import models.BabySitter;
 import models.BabySitterAvailable;
+import models.Parent;
 import play.Logger;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -19,16 +23,16 @@ public class Application extends Controller
 
 	public static Result listAvailableBabySitters(String latitude, String longitude, String start, String end) {
 //		Ebean.getServer(null).getAdminLogging().setDebugGeneratedSql(true);
-		if (start.equals("")) start = "2012/05/04";
+		if (start.equals("")) start = "2012/05/09";
 		if (end.equals("")) end = "2012/05/10";
 		Date startDate = null;
 		Date endDate = null;
-		DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+		DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 		try {
 			startDate = formatter.parse(start);
 			Logger.debug("Parsed the start date!");
 		} catch (Exception e) {
-			Logger.debug("Failed to parse start date");
+			Logger.error("Failed to parse start date");
 			startDate = new Date();
 		}
 
@@ -36,10 +40,26 @@ public class Application extends Controller
 			endDate = formatter.parse(end);
 			Logger.debug("Parsed the end date!");
 		} catch (Exception e) {
-			Logger.debug("Failed to parse end date");
+			Logger.error("Failed to parse end date");
 			endDate = new Date();
 		}
+		
+		// Update the user's model to include the latest lat & lon
+		Parent.find.all().get(0).delete();
+		Parent p = new Parent();
+		p.id = 1L;
+		p.lastLatitude = latitude;
+		p.lastLongitude = longitude;
+		p.save();
 
+		// I could not get the update working and the google did not help me :(. Maybe some problems with
+		// the cache or something? We should have started with the Play 1.2.x version instead of this 
+		// "brand new, not so polished" 2.x...
+/*		Parent user = Ebean.find(Parent.class, 1);
+		user.lastLatitude = latitude;
+		user.lastLongitude = longitude;
+		user.save();
+*/
 		Logger.debug("Got the parameter: " + latitude +":" + longitude + ", start: " + startDate + ", end: " + endDate);
 		return ok(listBabySitters.render(BabySitter.find(Double.parseDouble(latitude), Double.parseDouble(longitude), startDate, endDate)));
 	}
@@ -51,7 +71,11 @@ public class Application extends Controller
 
 	public static Result index()
 	{
-		return ok(search.render("This is the default controller"));
+		Parent p = Parent.find.all().get(0);
+		Logger.debug("List size: " + Parent.find.all().size());
+		Logger.debug("id: " + p.id + ", lat: " + p.lastLatitude + ", lon: " + p.lastLongitude);
+		// Get the first result, which is our test user's account.
+		return ok(search.render(Parent.find.all().get(0)));
 	}
 	
 	public static Result addNewBabysitter()

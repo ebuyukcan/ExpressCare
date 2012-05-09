@@ -15,7 +15,7 @@ import play.db.ebean.Model;
 @SuppressWarnings("serial")
 @Entity 
 public class Parent extends Model {
-
+// For the demo we will have only one parent, whose id is therefore one.
     @Id
     public Long id;
     
@@ -28,8 +28,8 @@ public class Parent extends Model {
     @Formats.DateTime(pattern="yyyy-MM-dd")
     public Date birthday;
     
-    public double lastLatitude;
-    public double lastLongitude;
+    public String lastLatitude;
+    public String lastLongitude;
     
     /**
      * Generic query helper for entity Computer with id Long
