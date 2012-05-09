@@ -3,9 +3,6 @@ package controllers;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
-
-import com.avaje.ebean.Ebean;
 
 import models.BabySitter;
 import models.BabySitterAvailable;
@@ -14,6 +11,7 @@ import play.Logger;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.addBabysitter;
+import views.html.contactBabysitter;
 import views.html.listBabySitters;
 import views.html.search;
 import views.html.viewBabysitter;
@@ -91,8 +89,8 @@ public class Application extends Controller
     //TODO Ids for availabilty are also needed here
     public static Result contactBabysitter(String sitterId)
     {
-		return ok();
-//    	return ok(contactBabysitter.render(BabySitter.getSitter(sitterId)));
+//		return ok();
+    	return ok(contactBabysitter.render(BabySitter.getSitter(sitterId)));
     }
 
     //TODO Ids for availabilty should be used here, not sitter ids!
