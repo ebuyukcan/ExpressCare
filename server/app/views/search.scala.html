@@ -14,15 +14,16 @@
 	  
 		@helper.form(action = routes.Application.listAvailableBabySitters(), 'class -> "grid_6", 'style -> "margin-top:0" ) {
 			
-		<div class="input grid_5" style="margin-top: 0">
+		<div class="grid_5" style="margin-top: 0">
         <div>
         <p class="grid_1" style="color:#c0c0c0;font-size:8em;margin-top:0;">2</p>
         <div class="grid_3" style="margin-top:2em; margin-bottom:2em;">
 		    <label for="startTime">start time?</label>
-            <input id="startTime" name="start" type="text" size="10" />
+            <input id="startTime" name="start" type="text" size="20" />
 
             <label for="endTime">end time?</label>
-            <input id="endTime" name="end" type="text" size="10"/>
+            <input id="endTime" name="end" type="text" size="20"/>
+            <p  class="grid_2">&nbsp;</p>
      
 			<span style="display:none;">
 			<label>Address : </label> <input id="addresspicker_map" />   <br/>
@@ -41,7 +42,7 @@
 				<dt class="grid_1" style="margin-top:0.2em">hours</dt><dd class="grid_1" style="margin-top:0.2em"><strong id="amount_of_hours">-</strong></dd>
 				<dt class="grid_1">total</dt><dd class="grid_1"><strong id="total_amount">-</strong> €</dd>
 			</dl>
-			<input class="grid_3" style="margin-top:2em" type="submit" value="Request a babysitter"/>
+			<input class="grid_2" style="margin-top:2em" type="submit" value="Request a babysitter"/>
 			</div>
 			
 		</div>
