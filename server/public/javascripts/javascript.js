@@ -50,6 +50,7 @@ $(function() {
 	    onSelect: function (selectedDateTime){
 	        var start = $(this).datetimepicker('getDate');
 	        $('#endTime').datetimepicker('option', 'minDate', new Date(start.getTime()));
+	        updateHoursAndPrice();
 	    }
 	});
 	$('#endTime').datetimepicker({
@@ -72,6 +73,7 @@ $(function() {
 	    onSelect: function (selectedDateTime){
 	        var end = $(this).datetimepicker('getDate');
 	        $('#startTime').datetimepicker('option', 'maxDate', new Date(end.getTime()));
+	        updateHoursAndPrice();
 	    }
 	});
 
@@ -81,5 +83,20 @@ $(function() {
 	defaultEnd.setTime(defaultEnd.getTime() + endAheadHours*60*60*1000);
 	$("#startTime").datetimepicker('setDate', defaultStart);
 	$("#endTime").datetimepicker('setDate', defaultEnd);
+	
+	updateHoursAndPrice();
+});
 
-	});
+
+function updateHoursAndPrice() {
+	var startDate = $('#startTime').datetimepicker('getDate');
+	var endDate = $('#endTime').datetimepicker('getDate');
+	
+	var difference = endDate.getTime() - startDate.getTime();
+	var hours = (difference / (60 * 60 * 1000)).toFixed(2);
+	$('#amount_of_hours').html(hours);
+	$('#total_amount').html((hours * $('#hourly_price').html()).toFixed(2));
+}
+
+
+

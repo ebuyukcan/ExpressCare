@@ -5,23 +5,23 @@
 		<h1 class="grid_12">Here comes the header</h1>
 
 		<div class="grid_6">
-		<p class="grid_1" style="color:#c0c0c0;font-size:8em">1</p>
+		<p class="grid_1" style="color:#c0c0c0;font-size:8em;margin-top:0;">1</p>
 		<div class="grid_5" id="map"> </div>
 		<p class="grid_6">You can drag and drop the marker to the correct location</p>
 		</div>
 
 	  
-		@helper.form(action = routes.Application.listAvailableBabySitters(), 'class -> "grid_6" ) {
+		@helper.form(action = routes.Application.listAvailableBabySitters(), 'class -> "grid_6", 'style -> "margin-top:0" ) {
 			
-		<div class="input grid_5">
+		<div class="input grid_5" style="margin-top: 0">
         <div>
-        <p class="grid_1" style="color:#c0c0c0;font-size:8em">2</p>
+        <p class="grid_1" style="color:#c0c0c0;font-size:8em;margin-top:0;">2</p>
         <div class="grid_3" style="margin-top:2em; margin-bottom:2em;">
 		    <label for="startTime">start time?</label>
-            <input id="startTime" name="start" type="text" size="20" />
+            <input id="startTime" name="start" type="text" size="10" />
 
             <label for="endTime">end time?</label>
-            <input id="endTime" name="end" type="text" size="20"/>
+            <input id="endTime" name="end" type="text" size="10"/>
      
 			<span style="display:none;">
 			<label>Address : </label> <input id="addresspicker_map" />   <br/>
@@ -33,9 +33,16 @@
 		</div>
 
 		<div>
-			<p class="grid_1" style="color:#c0c0c0;font-size:8em">3</p>		
-			<input class="grid_3" style="margin-top:5em" type="submit" value="Request a babysitter"/>
-
+			<p class="grid_1" style="color:#c0c0c0;font-size:8em;margin-top:0;">3</p>
+			<div class="grid_3" style="margin-top:0.5em">
+			<dl>
+				<dt class="grid_1">price</dt><dd class="grid_1"><strong id="hourly_price">13</strong> €/h</dd>
+				<dt class="grid_1">hours</dt><dd class="grid_1"><strong id="amount_of_hours">-</strong></dd>
+				<dt class="grid_1">total</dt><dd class="grid_1"><strong id="total_amount">-</strong></dd>
+			</dl>
+			<input class="grid_3" style="margin-top:2em" type="submit" value="Request a babysitter"/>
+			</div>
+			
 		</div>
 		</div>
 		}
