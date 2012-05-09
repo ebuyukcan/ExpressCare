@@ -27,10 +27,10 @@ public class Application extends Controller
 		if (end.equals("")) end = "2012/05/10";
 		Date startDate = null;
 		Date endDate = null;
-		DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+		DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm");
 		try {
 			startDate = formatter.parse(start);
-			Logger.debug("Parsed the start date!");
+			Logger.debug("Parsed the start date! " + start);
 		} catch (Exception e) {
 			Logger.error("Failed to parse start date");
 			startDate = new Date();
@@ -38,7 +38,7 @@ public class Application extends Controller
 
 		try {
 			endDate = formatter.parse(end);
-			Logger.debug("Parsed the end date!");
+			Logger.debug("Parsed the end date! " + end);
 		} catch (Exception e) {
 			Logger.error("Failed to parse end date");
 			endDate = new Date();
@@ -72,6 +72,8 @@ public class Application extends Controller
 	public static Result index()
 	{
 		// Get the first result, which is our test user's account.
+		// My eclipse gives an error about this, because it thinks that the scala template wants a String
+		// instead of a Parent... Strange.
 		return ok(search.render(Parent.find.all().get(0)));
 	}
 	
