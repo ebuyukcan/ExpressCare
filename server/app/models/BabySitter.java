@@ -74,20 +74,20 @@ public class BabySitter extends Model {
      * @param filter Filter applied on the name column
      */
     public static List<BabySitter> find(double latitude, double longitude, Date start, Date end) {
-// Deprecated stuff. Do these again if you have time...
+    	// Deprecated stuff. Do these again if you have time...
     	Timestamp startTs = new Timestamp(start.getTime());
     	Timestamp endTs = new Timestamp(end.getTime());
     	
     	List<BabySitterAvailable> list = BabySitterAvailable.find.
     			where(Expr.and(Expr.le("start_time", startTs.toString()), 
     					Expr.ge("end_time", endTs.toString()))).findList();
+    	
     	// FIXME this should be done in the SQL query...
     	List<BabySitter> sitters = new ArrayList<BabySitter>();
     	for (BabySitterAvailable bsa : list) {    		
     		sitters.add(bsa.babySitter);
     		Logger.debug("added " + bsa.babySitter.firstName);
     	}
-    	
     	return sitters;
     }
     

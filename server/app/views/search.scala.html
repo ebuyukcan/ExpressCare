@@ -1,16 +1,7 @@
-@(message: String)
+@(parent: Parent)
 
 @main("Search for your available babysitters") {
 
-	<div class="container_12">
-		<div class="header grid_12">
-			<a class="grid_2 push_1" href="#">Home</a>
-			<a class="grid_2 push_1" href="#">Meet our babysitters</a>
-			<a class="grid_2 push_1" href="#">FAQ</a>
-			<a class="grid_2 push_1" href="#">About</a>
-			<a class="grid_2 push_1" href="#">Logout</a>
-		</div>
-		
 		<h1 class="grid_12">Here comes the header</h1>
 
 		<div class="grid_6">
@@ -48,7 +39,9 @@
 		</div>
 		</div>
 		}
-	</div>
-     
+
 }
 
+<script type="text/javascript">
+	initMap(@parent.lastLatitude, @parent.lastLongitude);
+</script>
