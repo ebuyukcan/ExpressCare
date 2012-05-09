@@ -5,7 +5,7 @@
 
 	    @if(flash.containsKey("success")) {
 	        <div class="grid_12 alert-message warning">
-	            <strong>Done!</strong> @flash.get("success")
+	            @flash.get("success")
 	        </div>
 	    } 
 
