@@ -102,11 +102,12 @@ public class Application extends Controller
     }
 
     //TODO Ids for availability should be used here, not sitter ids!
-    public static Result requestSitter()
+    public static Result requestSitter(String id)
     {
-    	BabySitterAvailable.setRequested((String) request().body().asFormUrlEncoded().get("id")[0]);
+//    	BabySitterAvailable.setRequested((String) request().body().asFormUrlEncoded().get("id")[0]);
     	// return ok(search.render("This is the default controller"));
-    	return redirect("/listBabySitters");
+        flash("success", "Babysitter has been requested!");
+    	return redirect("/");
     }
     
     //TODO Ids for availability should be used here, not sitter ids!

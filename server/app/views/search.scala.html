@@ -3,6 +3,12 @@
 @main("Search for your available babysitters") {
 <!-- TODO: The styles should be integrated to the css -->
 
+	    @if(flash.containsKey("success")) {
+	        <div class="grid_12 alert-message warning">
+	            <strong>Done!</strong> @flash.get("success")
+	        </div>
+	    } 
+
 		<h1 class="grid_12">Xpress Care</h1>
 
 		<div class="grid_6">
