@@ -15,8 +15,9 @@ public class Application extends Controller
 {
 
 
-	public static Result listAvailableBabySitters(String latitude, String longitude, String start, String end) {
+	public static Result listAvailableBabySitters(String latitude, String longitude, String start, String end, String mobile) {
 //		Ebean.getServer(null).getAdminLogging().setDebugGeneratedSql(true);
+		boolean renderMobile = Boolean.parseBoolean(mobile);
 		if (start.equals("")) start = "2012/05/09";
 		if (end.equals("")) end = "2012/05/10";
 		Date startDate = null;
@@ -53,7 +54,11 @@ public class Application extends Controller
 		}
 
 		Logger.debug("Got the parameter: " + latitude +":" + longitude + ", start: " + startDate + ", end: " + endDate);		
-		return ok(listBabySitters.render(BabySitter.find(Double.parseDouble(latitude), Double.parseDouble(longitude), startDate, endDate)));
+		if (!renderMobile) {
+			return ok(listBabySitters.render(BabySitter.find(Double.parseDouble(latitude), Double.parseDouble(longitude), startDate, endDate)));
+		} else {
+			return ok(listBabySittersMobile.render(BabySitter.find(Double.parseDouble(latitude), Double.parseDouble(longitude), startDate, endDate)));
+		}
 	}
 	
 	public static Result addBabysitter()
@@ -85,49 +90,29 @@ public class Application extends Controller
 	{
 
 	    String start = "2012/05/09";
-
 		String end = "2012/05/10";
 
 		Date startDate = null;
-
 		Date endDate = null;
-
 		DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm");
 
 		try {
-
 			startDate = formatter.parse(start);
-
 			Logger.debug("Parsed the start date! " + start);
-
 		} catch (Exception e) {
-
 			Logger.error("Failed to parse start date");
-
 			startDate = new Date();
-
 		}
 
-
-
 		try {
-
 			endDate = formatter.parse(end);
-
 			Logger.debug("Parsed the end date! " + end);
-
 		} catch (Exception e) {
-
 			Logger.error("Failed to parse end date");
-
 			endDate = new Date();
-
 		}
 
 	  return ok(emergencyList.render(BabySitter.find(0, 0,startDate,endDate))) ;
-
-	
-
 	}
     
     public static Result getBabysitter(String id)
@@ -150,16 +135,18 @@ public class Application extends Controller
     }
 
     //TODO Ids for availability should be used here, not sitter ids!
-    public static Result requestSitter(String id)
+    public static Result requestSitter(String id, String mobile)
     {
     	if (id.equals(""))
-    		return internalServerError();
+    		return redirect("/");
+    	boolean mobileMode = Boolean.parseBoolean(mobile);
       	//System.out.println("uri= " + request().uri() + " " + request().path() + " " + request().queryString().get("latitude"));
     	BabySitterAvailable bs = BabySitterAvailable.findById(Long.parseLong(id));
         bs.setRequested();
     	
     	flash("success", bs.babySitter.firstName + " " + bs.babySitter.lastName + " has been requested. You will be contacted shortly.");
-    	return redirect("/listBabySitters");
+
+    	return redirect("/listBabySitters" + (mobileMode ? "?mobile=true" : ""));
     	//return ok(listBabySitters.render(BabySitter.find(Double.parseDouble(latitude), Double.parseDouble(longitude), startDate, endDate)));
     }
     
@@ -177,8 +164,5 @@ public class Application extends Controller
     	//return ok(listBabySitters.render(BabySitter.find(Double.parseDouble(latitude), Double.parseDouble(longitude), startDate, endDate)));
     	return redirect("/");
     }
-
-
-
 
 }

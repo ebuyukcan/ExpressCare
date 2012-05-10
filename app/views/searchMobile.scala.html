@@ -2,25 +2,60 @@
 @(message: String)
 
 @mainMobile("Search for your available babysitters") {
-<header>
-            ExpressCare
-       </header>
- <div id="container">
-    
-    <div id="main" role="main">
-	<!--@helper.form(action = routes.Application.listAvailableBabySitters(), 'class -> "container_6", 'style -> "margin-top:0" ) { -->
-		    <label for="address"> Address </label> <input  id="address" name="address" type="text" ></input>
-			<label for="startDate"> Start Date </label> <input  id="startDate" name="startDate" type="date" data-role="datebox" data-options='{"mode": "flipbox"}'> </input>
-			<label for="startTime"> Start Time </label> <input  id="startTime" name="startTime" type="date" data-role="datebox" data-options='{"mode": "timeflipbox"}'> </input>
-			<label for="endDate"> End Date </label> <input  id="endDate" name="endDate" type="date" data-role="datebox" data-options='{"mode": "flipbox"}'> </input>
+<header>Request a babysitter</header>
 
-			<label for="endTime"> End Time </label> <input  id="endTime" name="endTime" type="date" data-role="datebox"data-options='{"mode": "timeflipbox"}'></input>
-            <input type="submit" value="Request Babysitter" />      
-
-	<!--}-->
+<script type="text/javascript">
+   $(function() {
+	   if(navigator.geolocation){
+	      // timeout at 60000 milliseconds (60 seconds)
+	      var options = {timeout:60000};
+	      navigator.geolocation.getCurrentPosition(showLocation, 
+	                                               null,
+	                                               options);
+	   }else{
+	      alert("Sorry, browser does not support geolocation!");
+	   }
+   });
+	$(function() {
+		var start = new Date();
+		var end = new Date();
+		start.setSeconds(0);
+		end.setSeconds(0);
 		
+		start.setHours(start.getHours()+8);
+		end.setHours(end.getHours()+10);
+		
+		$('#startDate').val(start.getDate() + '/' + (start.getMonth()+1) + '/' + start.getFullYear());
+		$('#endDate').val(end.getDate() + '/' + (end.getMonth()+1) + '/' + end.getFullYear());
+		$('#startTime').val(start.getHours() + ':' + start.getMinutes());
+		$('#endTime').val(end.getHours() + ':' + end.getMinutes());
+   });
+   
+	function showLocation(position) {
+		$('#lat').val(position.coords.latitude);
+		$('#lon').val(position.coords.longitude);
+	}
+</script>
 
-     
+<!-- <div id="container">
+    <div id="main" role="main">-->
+
+	@helper.form(action = routes.Application.listAvailableBabySitters(), 'style -> "margin-top:0" ) {
+	    <label for="address">Address</label><input id="address" name="address" type="text" value="Home road 3" />
+	    <input type="hidden" name="latitude" id="lat" /><input type="hidden" name="longitude" id="lon" />
+		
+		<label for="startDate">Start Date</label>
+		<input id="startDate" name="startDate" type="date" data-role="datebox" data-options='{"mode": "flipbox"}' />
+		<label for="startTime">Start Time</label>
+		<input id="startTime" name="startTime" type="date" data-role="datebox" data-options='{"mode": "timeflipbox"}'/>
+		<label for="endDate">End Date</label>
+		<input id="endDate" name="endDate" type="date" data-role="datebox" data-options='{"mode": "flipbox"}' />
+
+		<label for="endTime">End Time</label>
+		<input id="endTime" name="endTime" type="date" data-role="datebox" data-options='{"mode": "timeflipbox"}' />
+		<input type="hidden" name="mobile" value="true" />
+        <input type="submit" value="Request Babysitter" />
+
+	}
 }
-
 
