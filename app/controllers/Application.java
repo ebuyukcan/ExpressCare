@@ -40,6 +40,10 @@ public class Application extends Controller
 		
 		if (!latitude.equals("0") && !longitude.equals("0")) {
 			// Update the user's model to include the latest lat & lon
+//			Parent.find.all().get(0).updateLatLon(latitude, longitude);
+			// I could not get the update working and the google did not help me :(. Maybe some problems with
+			// the cache or something? We should have started with the Play 1.2.x version instead of this 
+			// "brand new, not so polished" 2.x...
 			Parent.find.all().get(0).delete();
 			Parent p = new Parent();
 			p.id = 1L;
@@ -48,14 +52,6 @@ public class Application extends Controller
 			p.save();
 		}
 
-		// I could not get the update working and the google did not help me :(. Maybe some problems with
-		// the cache or something? We should have started with the Play 1.2.x version instead of this 
-		// "brand new, not so polished" 2.x...
-/*		Parent user = Ebean.find(Parent.class, 1);
-		user.lastLatitude = latitude;
-		user.lastLongitude = longitude;
-		user.save();
-*/
 		Logger.debug("Got the parameter: " + latitude +":" + longitude + ", start: " + startDate + ", end: " + endDate);		
 		return ok(listBabySitters.render(BabySitter.find(Double.parseDouble(latitude), Double.parseDouble(longitude), startDate, endDate)));
 	}
