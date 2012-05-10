@@ -108,6 +108,8 @@ p {
     font-weight: normal;
     line-height: 18px;
     margin-top: 0;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
 }
 
 a{
