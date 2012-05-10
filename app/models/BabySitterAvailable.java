@@ -52,7 +52,7 @@ public class BabySitterAvailable extends Model {
         bsa.startTime = availability.startTime;
         bsa.babySitter = availability.babySitter;
         bsa.save();*/
-        find.byId(Long.parseLong(id)).requested = true;
+        //find.byId(Long.parseLong(id)).requested = true;
         find.byId(Long.parseLong(id)).update();
         System.out.println("requested= " + find.byId(Long.parseLong(id)).requested);
     }

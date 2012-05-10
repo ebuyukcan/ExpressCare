@@ -105,9 +105,10 @@ public class Application extends Controller
     public static Result requestSitter(String id)
     {
     	BabySitterAvailable.setRequested(id);
+    	//System.out.println("uri= " + request().uri() + " " + request().path() + " " + request().queryString().get("latitude"));
     	BabySitterAvailable bs = BabySitterAvailable.find.byId(Long.parseLong(id));
         flash("success", bs.babySitter.firstName + " " + bs.babySitter.lastName + " has been requested. You will be contacted shortly.");
-    	return redirect("/");
+    	return redirect("/listBabySitters");
     	//return ok(listBabySitters.render(BabySitter.find(Double.parseDouble(latitude), Double.parseDouble(longitude), startDate, endDate)));
     }
     
@@ -115,9 +116,11 @@ public class Application extends Controller
     public static Result agreeSitter()
     {
     	String id = (String) request().body().asFormUrlEncoded().get("id")[0];
+    	
     	BabySitterAvailable.setAgreed(id);
     	BabySitterAvailable bs = BabySitterAvailable.find.byId(Long.parseLong(id));
     	flash("success", bs.babySitter.firstName + " " + bs.babySitter.lastName + " has been agreed. S/he will make sure of your child's comfort.");
+		//return ok(listBabySitters.render(BabySitter.find(Double.parseDouble(latitude), Double.parseDouble(longitude), startDate, endDate)));
     	return redirect("/");
     }
 

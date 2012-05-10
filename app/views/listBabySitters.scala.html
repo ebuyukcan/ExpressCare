@@ -21,7 +21,12 @@
 				
 				<input type="hidden" id="id" name="id" value="@sitter.id" />
 				
-				<input class="grid_1" type="submit" name="submit" value="Request"/>
+				@if(!sitter.requested) {
+					<input class="grid_1" type="submit" name="submit" value="Request"/>
+				}
+				@if(sitter.requested) {
+					<input class="grid_1" type="submit" name="submit" value="Request" disabled="disabled"/>
+				}
 			</div>
 		}
 		
