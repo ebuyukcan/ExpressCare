@@ -1,7 +1,6 @@
 package models;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -10,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import play.Logger;
 import play.data.format.Formats;
 import play.data.validation.Constraints;
 import play.data.validation.Constraints.Email;
@@ -79,7 +77,7 @@ public class BabySitter extends Model {
     	for (BabySitterAvailable bsa : list) {
     		// because lazy loading does not work from the templates, we have to cheat like this 
     		// or create getters and setters? http://osdir.com/ml/play-framework/2012-02/msg01672.html
-    		String firstName = bsa.babySitter.firstName;
+    		bsa.babySitter = BabySitter.find.byId(bsa.babySitter.id);
     	}
     	
     	return list;
