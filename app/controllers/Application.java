@@ -117,11 +117,14 @@ public class Application extends Controller
     public static Result agreeSitter()
     {
     	String id = (String) request().body().asFormUrlEncoded().get("id")[0];
-    	
-    	BabySitterAvailable.setAgreed(id);
-    	BabySitterAvailable bs = BabySitterAvailable.find.byId(Long.parseLong(id));
-    	flash("success", bs.babySitter.firstName + " " + bs.babySitter.lastName + " has been agreed. S/he will make sure of your child's comfort.");
-		//return ok(listBabySitters.render(BabySitter.find(Double.parseDouble(latitude), Double.parseDouble(longitude), startDate, endDate)));
+    	BabySitterAvailable bs = BabySitterAvailable.findById(Long.parseLong(id));
+    	Logger.debug("Babysitter isAgreed: " + bs.agreed);
+    	if (!bs.agreed) { 
+    			bs.setAgreed();
+    			//    	BabySitterAvailable.setAgreed(id);
+    			flash("success", bs.babySitter.firstName + " " + bs.babySitter.lastName + " has been agreed. " + bs.babySitter.firstName + " will call you soon and then you can set the details.");
+    	}
+    	//return ok(listBabySitters.render(BabySitter.find(Double.parseDouble(latitude), Double.parseDouble(longitude), startDate, endDate)));
     	return redirect("/");
     }
 

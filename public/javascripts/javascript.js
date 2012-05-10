@@ -25,8 +25,8 @@ function initMap(lat, lon) {
 $(function() {
 	
 	/** Datepickers **/
-	var startAheadHours = 2;
-	var endAheadHours = 4;
+	var startAheadHours = 24;
+	var endAheadHours = 28;
 	
 	var now = new Date();
 	
@@ -89,14 +89,40 @@ $(function() {
 
 
 function updateHoursAndPrice() {
+	var baseprice = 13;
+	$('#hourly_price').html(baseprice);
+
 	var startDate = $('#startTime').datetimepicker('getDate');
 	var endDate = $('#endTime').datetimepicker('getDate');
+	var now = new Date();
 	
-	var difference = endDate.getTime() - startDate.getTime();
+	if (endDate.getTime() - startDate.getTime() < 0 || startDate.getTime() - now.getTime() < 0) {
+		$('#amount_of_hours').html("-");
+		$('#total_amount').html("-");
+		$('#hourly_price').removeClass("emergency_price");
+		$('#emergency_price_info').hide();
+		return;
+	}
+	
+	var difference = (((startDate.getTime() - now.getTime())/ (60 * 60 * 1000)).toFixed(2));
+	if (difference < 20) {
+		/** Emergency case **/
+		var current_price = baseprice;
+		current_price += current_price*(1/(difference*0.1));
+		/** cast to double before applying tofixed(). Loving the Javascript. **/
+		$('#hourly_price').html((1.0*current_price).toFixed(2));
+		$('#hourly_price').addClass("emergency_price");
+		$('#emergency_price_info').show();
+	} else {
+		$('#hourly_price').removeClass("emergency_price");
+		$('#emergency_price_info').hide();
+	}
+	
+	
+	difference = endDate.getTime() - startDate.getTime();
 	var hours = (difference / (60 * 60 * 1000)).toFixed(2);
 	$('#amount_of_hours').html(hours);
 	$('#total_amount').html((hours * $('#hourly_price').html()).toFixed(2));
+	
 }
-
-
 
