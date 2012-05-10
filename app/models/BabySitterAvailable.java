@@ -58,6 +58,11 @@ public class BabySitterAvailable extends Model {
     	this.requested = true;
     	this.save();
     }
+
+    public void setAgreed() {
+    	this.agreed = true;
+    	this.save();
+    }
     
     // I hate this.
     public static BabySitterAvailable findById(Long id) {
