@@ -46,7 +46,9 @@ public class BabySitter extends Model {
     
     public String description;
     
-    public List<String> parentRecommendations;
+    public boolean favorited;
+    
+    public int numberOfParentRecommendations;
     
     public List<String> sitterRecommendations;
     
