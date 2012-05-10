@@ -8,6 +8,8 @@ client/.DS_Store
 
 # Files related to Play build or usage
 id
+.classpath
+.settings/
 dist
 framework/classes
 framework/test-classes
