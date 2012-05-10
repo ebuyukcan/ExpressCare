@@ -15,15 +15,15 @@
 		@helper.form(action = routes.Application.requestSitter()) {
 			<div class="container_12">
 				<img class="grid_2" src="@sitter.babySitter.pictureUrl" title="Reliable babysitters!" />
-				<h1 class="grid_10">@sitter.babySitter.firstName @sitter.babySitter.lastName</h1>
+				<h1 class="grid_9">@sitter.babySitter.firstName @sitter.babySitter.lastName</h1>
+				<p class="grid_1" style="margin-left:0; display: @{val v = new Random(); if(v.nextInt(2) == 1) { "block"; } else { "none";}}">
+				<img width="30" src="@routes.Assets.at("images/star.png")" title="Favorited!" /></p>
 				
 <!--				<h2 class="grid_10">Available from @sitter.startTime to @sitter.endTime</h2> -->
-				<p class="grid_7">@sitter.babySitter.basicInfo</p>
+				<p class="availability grid_7">@sitter.babySitter.basicInfo</p>
 				<div class="grid_3"><p class="grid_3 alpha">@{val v = new Random(); v.nextInt(5)} of your friends recommend!</p>
-				<p class="grid_3 omega" style="margin-left:0; display: @{val v = new Random(); if(v.nextInt(2) == 1) { "block"; } else { "none";}}">
-				<img width="40" src="@routes.Assets.at("images/star.png")" title="Favorited!" /></p>
 				</div>
-				
+				<div class="grid_10" style="margin:0">&nbsp;</div>
 				<input type="hidden" id="id" name="id" value="@sitter.id" />
 				
 				@if(!sitter.requested) {
