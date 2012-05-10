@@ -5,6 +5,10 @@ body {
   font-size: 16px;
   font-style: normal;
   font-weight: 300;
+    background-image:url(../../images/backgr2.png);
+  background-repeat:no-repeat;
+  background-position:center;
+
 }
 
 h1 {
@@ -48,6 +52,7 @@ label {
 p {
   float:left;
   width: 100%;
+  
 }
 .gist {
   margin-top: 10px;
@@ -114,3 +119,4 @@ a:hover	{
 	color:#DFCFFF;
 	font-weight:700;
 	}
+	
