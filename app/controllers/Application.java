@@ -38,13 +38,15 @@ public class Application extends Controller
 			endDate = new Date();
 		}
 		
-		// Update the user's model to include the latest lat & lon
-		Parent.find.all().get(0).delete();
-		Parent p = new Parent();
-		p.id = 1L;
-		p.lastLatitude = latitude;
-		p.lastLongitude = longitude;
-		p.save();
+		if (!latitude.equals("0") && !longitude.equals("0")) {
+			// Update the user's model to include the latest lat & lon
+			Parent.find.all().get(0).delete();
+			Parent p = new Parent();
+			p.id = 1L;
+			p.lastLatitude = latitude;
+			p.lastLongitude = longitude;
+			p.save();
+		}
 
 		// I could not get the update working and the google did not help me :(. Maybe some problems with
 		// the cache or something? We should have started with the Play 1.2.x version instead of this 
@@ -104,10 +106,13 @@ public class Application extends Controller
     //TODO Ids for availability should be used here, not sitter ids!
     public static Result requestSitter(String id)
     {
-    	BabySitterAvailable.setRequested(id);
-    	//System.out.println("uri= " + request().uri() + " " + request().path() + " " + request().queryString().get("latitude"));
-    	BabySitterAvailable bs = BabySitterAvailable.find.byId(Long.parseLong(id));
-        flash("success", bs.babySitter.firstName + " " + bs.babySitter.lastName + " has been requested. You will be contacted shortly.");
+    	if (id.equals(""))
+    		return internalServerError();
+      	//System.out.println("uri= " + request().uri() + " " + request().path() + " " + request().queryString().get("latitude"));
+    	BabySitterAvailable bs = BabySitterAvailable.findById(Long.parseLong(id));
+        bs.setRequested();
+    	
+    	flash("success", bs.babySitter.firstName + " " + bs.babySitter.lastName + " has been requested. You will be contacted shortly.");
     	return redirect("/listBabySitters");
     	//return ok(listBabySitters.render(BabySitter.find(Double.parseDouble(latitude), Double.parseDouble(longitude), startDate, endDate)));
     }

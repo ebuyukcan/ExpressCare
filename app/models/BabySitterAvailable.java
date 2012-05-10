@@ -42,8 +42,8 @@ public class BabySitterAvailable extends Model {
      * Marks a babysitter as requested for that time period
      * @param id Unique id of the available period
      */
-    public static void setRequested(String id) {
-        BabySitterAvailable availability = find.byId(Long.parseLong(id));
+    public static void setRequested(long id) {
+        BabySitterAvailable availability = BabySitterAvailable.find.byId(id);
         availability.requested = true;
         availability.save();
         /*BabySitterAvailable.find.all().get(Integer.parseInt(id)).delete();
@@ -56,7 +56,19 @@ public class BabySitterAvailable extends Model {
         bsa.save();*/
         //find.byId(Long.parseLong(id)).requested = true;
         //find.byId(Long.parseLong(id)).update();
-        System.out.println("requested= " + find.byId(Long.parseLong(id)).requested);
+        System.out.println("requested= " + find.byId(id).requested);
+    }
+    
+    public void setRequested() {
+    	this.requested = true;
+    	this.save();
+    }
+    
+    // I hate this.
+    public static BabySitterAvailable findById(Long id) {
+    	BabySitterAvailable bsa = BabySitterAvailable.find.byId(id);
+    	bsa.babySitter = BabySitter.find.byId(bsa.babySitter.id);
+    	return bsa;
     }
     
     /**
