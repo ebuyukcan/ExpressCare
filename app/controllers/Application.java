@@ -79,6 +79,56 @@ public class Application extends Controller
 	{
 		return ok(addBabysitter.render("This is the default controller"));
 	}
+	
+	public static Result emergencyList() 
+
+	{
+
+	    String start = "2012/05/09";
+
+		String end = "2012/05/10";
+
+		Date startDate = null;
+
+		Date endDate = null;
+
+		DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+
+		try {
+
+			startDate = formatter.parse(start);
+
+			Logger.debug("Parsed the start date! " + start);
+
+		} catch (Exception e) {
+
+			Logger.error("Failed to parse start date");
+
+			startDate = new Date();
+
+		}
+
+
+
+		try {
+
+			endDate = formatter.parse(end);
+
+			Logger.debug("Parsed the end date! " + end);
+
+		} catch (Exception e) {
+
+			Logger.error("Failed to parse end date");
+
+			endDate = new Date();
+
+		}
+
+	  return ok(emergencyList.render(BabySitter.find(0, 0,startDate,endDate))) ;
+
+	
+
+	}
     
     public static Result getBabysitter(String id)
     {

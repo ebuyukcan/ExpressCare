@@ -1,20 +1,40 @@
-@(babysitters: List[BabySitter])
+@(babysitters: List[BabySitterAvailable])
 
 @main("List of babysitters") {
     
-<!-- 	<h1></h1>
-
-	@helper.form(action = routes.Application.requestSitter()) {
-		@for(sitter <- babysitters) {
-			<h1>@sitter.firstName @sitter.lastName</h1>
-			
-			<input type="hidden" id="id" name="id" value="@sitter.id" />
-			
-		}
-		
-		<input type="submit" name="submit" value="Request"/>
+	<header class="grid_12">High Priority Request</header>
 	
-	} -->
+	<p class="grid_12">You made a request for a Babysitting that will take place in less than 7 hours from now.</p>
+	<p class="grid_3">Our service considers this a</p> <p class= "grid_5" style="font-size:2em; color:#FFB730"> high priority case.</p>
+    <p class="grid_8">We have already sent requests to our available babysitters. The system will wait </p>
+	<p  class="grid_4 " style="font-size:2em; color:#FFB730"> 10 minutes</p>  <p class="grid_12">for your usual babystitter to answer. In the meanwhile
+    you will see in the following box a list of our babysitter that have been answering to your request. Instead of waiting, if you wish you can 
+	immediately select and confirm any of our babysitter that have appeared in the box. </p>
+
+	
+	
+	<p class="prefix_2 grid_10" style="color:#FFB730;font-size:6em;margin-top:0;">8 min 23 sec ...</p>
+	
+	<div class="grid_12 box">  
+	<ul>
+		<li class="grid_12">  
+			<img class="grid_2" src="@routes.Assets.at("images/babysitters/small.jpg")"  /> 
+			<p class="grid_3"> Tiina Korhonen </p>
+			<button class="grid_2" type="button"> Accept </button>
+ 		
+        </li>
+		<li class="grid_12"> 
+			<img class="grid_2" src="@routes.Assets.at("images/babysitters/small1.jpg")"  />  
+			<p class="grid_3"> Jaakko Savolainen </p>
+			<button class="grid_2" type="button"> Accept </button>
+		
+		</li>
+		
+	</ul>
+	
+	
+	</div>
+
     
 }
 
