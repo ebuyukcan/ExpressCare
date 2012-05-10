@@ -106,9 +106,10 @@ function updateHoursAndPrice() {
 	
 	var difference = (((startDate.getTime() - now.getTime())/ (60 * 60 * 1000)).toFixed(2));
 	if (difference < 20) {
-	/** Emergency case **/
+		/** Emergency case **/
 		var current_price = baseprice;
 		current_price += current_price*(1/(difference*0.1));
+		/** cast to double before applying tofixed(). Loving the Javascript. **/
 		$('#hourly_price').html((1.0*current_price).toFixed(2));
 		$('#hourly_price').addClass("emergency_price");
 		$('#emergency_price_info').show();
@@ -124,6 +125,4 @@ function updateHoursAndPrice() {
 	$('#total_amount').html((hours * $('#hourly_price').html()).toFixed(2));
 	
 }
-
-
 
