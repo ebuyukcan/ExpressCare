@@ -203,6 +203,22 @@ ul { list-style-type: none; }
   
   margin-top: 10px;
   margin-bottom: 10px;
- 
 
+color:#606;
+
+display:block;
+background-color:#20A7DF;
+width:60px;
+text-align:center;
+text-decoration:none;
+-moz-border-radius: 5px;
+border-radius: 5px;
+
+}
+
+a.notify:hover,a.notify:active
+{
+background-color:#00AF00;
+-moz-border-radius: 5px;
+border-radius: 5px;
 }
