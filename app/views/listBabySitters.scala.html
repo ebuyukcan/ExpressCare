@@ -17,15 +17,19 @@
 				<img class="grid_2" src="@sitter.babySitter.pictureUrl" title="Reliable babysitters!" />
 				<h1 class="grid_10">@sitter.babySitter.firstName @sitter.babySitter.lastName</h1>
 				
-				<h2 class="availability grid_10">Available from @sitter.startTime to @sitter.endTime</h2>
+<!--				<h2 class="grid_10">Available from @sitter.startTime to @sitter.endTime</h2> -->
+				<p class="grid_7">@sitter.babySitter.basicInfo</p>
+				<div class="grid_3"><p class="grid_3 alpha">@{val v = new Random(); v.nextInt(5)} of your friends recommend!</p>
+				<p class="grid_3 omega" style="margin-left:0; display: @{val v = new Random(); if(v.nextInt(2) == 1) { "block"; } else { "none";}}">
+				<img width="40" src="@routes.Assets.at("images/star.png")" title="Favorited!" /></p>
+				</div>
 				
 				<input type="hidden" id="id" name="id" value="@sitter.id" />
 				
 				@if(!sitter.requested) {
 					<input class="grid_1" type="submit" name="submit" value="Request"/>
-				}
-				@if(sitter.requested) {
-					<input class="grid_1" type="submit" name="submit" value="Request" disabled="disabled"/>
+				} else {
+					<p class="grid_8">The sitter has already been requested</p> <!-- why are we even showing the already requested sitters?-->
 				}
 			</div>
 		}
