@@ -3,6 +3,12 @@
 @main("Available babysitters") {
     
 	<h1 class="grid_12">Available babysitters</h1>
+	
+	@if(flash.containsKey("success")) {
+	        <div class="grid_12 alert-message warning">
+	            @flash.get("success")
+	        </div>
+	    } 
 
 	@for(sitter <- babysitters) {
 		

@@ -104,18 +104,21 @@ public class Application extends Controller
     //TODO Ids for availability should be used here, not sitter ids!
     public static Result requestSitter(String id)
     {
-    	BabySitter bs = BabySitter.find.byId(Long.parseLong(id));
-//    	BabySitterAvailable.setRequested((String) request().body().asFormUrlEncoded().get("id")[0]);
-    	// return ok(search.render("This is the default controller"));
-        flash("success", bs.firstName + " has been requested. You will be contacted shortly.");
-    	return redirect("/");
+    	BabySitterAvailable.setRequested(id);
+    	BabySitterAvailable bs = BabySitterAvailable.find.byId(Long.parseLong(id));
+        flash("success", bs.babySitter.firstName + " " + bs.babySitter.lastName + " has been requested. You will be contacted shortly.");
+    	return redirect("");
+    	//return ok(listBabySitters.render(BabySitter.find(Double.parseDouble(latitude), Double.parseDouble(longitude), startDate, endDate)));
     }
     
     //TODO Ids for availability should be used here, not sitter ids!
     public static Result agreeSitter()
     {
-    	BabySitterAvailable.setAgreed((String) request().body().asFormUrlEncoded().get("id")[0]);
-    	return ok();
+    	String id = (String) request().body().asFormUrlEncoded().get("id")[0];
+    	BabySitterAvailable.setAgreed(id);
+    	BabySitterAvailable bs = BabySitterAvailable.find.byId(Long.parseLong(id));
+    	flash("success", bs.babySitter.firstName + " " + bs.babySitter.lastName + " has been agreed. S/he will make sure of your child's comfort.");
+    	return redirect("/");
     }
 
 

@@ -44,8 +44,16 @@ public class BabySitterAvailable extends Model {
      */
     public static void setRequested(String id) {
         BabySitterAvailable availability = find.byId(Long.parseLong(id));
-        availability.requested = true;
-        availability.save();
+        /*BabySitterAvailable.find.all().get(Integer.parseInt(id)).delete();
+        BabySitterAvailable bsa = new BabySitterAvailable();
+        bsa.id = availability.id;
+        bsa.requested = true;
+        bsa.endTime = availability.endTime;
+        bsa.startTime = availability.startTime;
+        bsa.babySitter = availability.babySitter;
+        bsa.save();*/
+        find.byId(Long.parseLong(id)).requested = true;
+        find.byId(Long.parseLong(id)).update();
         System.out.println("requested= " + find.byId(Long.parseLong(id)).requested);
     }
     
