@@ -87,16 +87,16 @@ public class Application extends Controller
     }
     
     //TODO Ids for availability are also needed here
-    public static Result contactBabysitter(String sitterId)
+    public static Result contactBabysitter(String id)
     {
 //		return ok();
-    	return ok(contactBabysitter.render(BabySitter.getSitter(sitterId)));
+    	return ok(contactBabysitter.render(BabySitterAvailable.findById(Long.parseLong(id))));
     }
     
-    public static Result contactBabysitterMobile(String sitterId)
+    public static Result contactBabysitterMobile(String id)
     {
     	//return ok();
-    	return ok(contactBabysitterMobile.render(BabySitter.getSitter(sitterId)));
+    	return ok(contactBabysitterMobile.render(BabySitterAvailable.findById(Long.parseLong(id))));
     }
 
     //TODO Ids for availability should be used here, not sitter ids!

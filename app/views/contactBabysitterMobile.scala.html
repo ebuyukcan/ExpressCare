@@ -1,4 +1,4 @@
-@(babysitter: BabySitter)
+@(babysitter: BabySitterAvailable)
 
 
 @mainMobile("Contact babysitter") {
@@ -7,13 +7,13 @@
 	
 		<h1>Contact information of the babysitter</h1>
 	
-		<h2>@babysitter.firstName</h2>	
+		<h2>@babysitter.babySitter.firstName</h2>	
 		
-		<h2>@babysitter.lastName</h2>	
+		<h2>@babysitter.babySitter.lastName</h2>	
 		
-		<h2>@babysitter.email</h2>
+		<h2>@babysitter.babySitter.email</h2>
 		
-		<h2>@babysitter.phone</h2>	
+		<h2>@babysitter.babySitter.phone</h2>	
 		
 		<input type="hidden" id="id" name="id" value="@babysitter.id" />
 		

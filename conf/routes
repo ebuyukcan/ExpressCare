@@ -14,8 +14,8 @@ POST	/babysitter							controllers.Application.addBabysitter()
 GET		/listBabySitters					controllers.Application.listAvailableBabySitters(latitude ?= "0", longitude ?= "0", start ?= "", end ?= "")
 GET     /request				         	controllers.Application.requestSitter(id ?= "")
 POST    /agree					            controllers.Application.agreeSitter() 
-GET 	/contact							controllers.Application.contactBabysitter(sitterId: String)
-GET 	/contactMobile						controllers.Application.contactBabysitterMobile(sitterId: String)
+GET 	/contact							controllers.Application.contactBabysitter(id: String)
+GET 	/contactMobile						controllers.Application.contactBabysitterMobile(id: String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

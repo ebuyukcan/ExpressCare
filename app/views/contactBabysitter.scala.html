@@ -1,4 +1,4 @@
-@(babysitter: BabySitter)
+@(babysitter: BabySitterAvailable)
 
 
 @main("Contact babysitter") {
@@ -6,18 +6,58 @@
 	@helper.form(action = routes.Application.agreeSitter()) {
 	
 		<h1>Contact information of the babysitter</h1>
-	
-		<h2>@babysitter.firstName</h2>	
 		
-		<h2>@babysitter.lastName</h2>	
+		<div class="container_12">
+				<img class="grid_2" src="@babysitter.babySitter.pictureUrl" title="Reliable babysitters!" />
+				<h1 class="grid_9">@babysitter.babySitter.firstName @babysitter.babySitter.lastName</h1>
+				@if(babysitter.babySitter.favorited) {
+				
+					<div class="grid_10" style="margin:0" align="center">
+					
+						<dl id="contact_details">
+						
+							<dt class="grid_2" style="margin-bottom:0"><img width="30" src="@routes.Assets.at("images/star.png")" title="Favorited!" /></dt><dd class="grid_2 details" style="margin-top:0;"><p class="availability grid_7">@babysitter.babySitter.numberOfParentRecommendations of your friends recommend!</p></dd>
+							
+						</dl>
+					
+					</div>
+				}
+				
+			<div class="grid_10" style="margin:0" align="center">
+				
+				<dl id="contact_details">
+				
+					<dt class="grid_2" style="margin-bottom:0"><img width="40" src="@routes.Assets.at("images/phone.gif")" title="Phone" /></dt><dd class="grid_2 details" style="margin-top:0;"><p class="availability grid_7">@babysitter.babySitter.phone</p></dd>
+					
+				</dl>
+			
+			</div>
+				
+			<div class="grid_10" style="margin:0" align="center">
+				
+				<dl id="contact_details" >
+					
+					<dt class="grid_2" style="margin-bottom:0"><img width="40" src="@routes.Assets.at("images/email.gif")" title="Email" /></dt><dd class="grid_2 details" style="margin-top:0;"><p class="availability grid_7">@babysitter.babySitter.email</p></dd>
+				
+				</dl>
+				
+			</div>
+			
+			<div class="grid_10" style="margin:0" align="center">
+				
+				<dl id="contact_details" >
+					
+					<dt class="grid_2" style="margin-bottom:0">Takes cares of your child from </dt><dd class="grid_2 details" style="margin-top:0;"><p class="availability grid_7">@babysitter.startTime to @babysitter.endTime</p></dd>
+				
+				</dl>
+				
+			</div>
+			
+			<input type="hidden" id="id" name="id" value="@babysitter.id" />
 		
-		<h2>@babysitter.email</h2>
-		
-		<h2>@babysitter.phone</h2>	
-		
-		<input type="hidden" id="id" name="id" value="@babysitter.id" />
-		
-		<input type="submit" name="submit" value="Confirm"/>
+		<div align="center">
+			<input class="grid_4" style="margin-top:2em; align:center" align="middle" type="submit" name="submit" value="Confirm"/>
+		</div>
 		
 	}
     
