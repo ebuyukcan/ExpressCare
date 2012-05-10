@@ -38,6 +38,8 @@ public class BabySitter extends Model {
     @Formats.DateTime(pattern="yyyy-MM-dd")
     public Date birthday;
     
+    public String pictureUrl;
+    
     public String video;
     
     public String basicInfo;
