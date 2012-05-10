@@ -35,6 +35,12 @@ public class Parent extends Model {
      * Generic query helper for entity Computer with id Long
      */
     public static Finder<Long,Parent> find = new Finder<Long,Parent>(Long.class, Parent.class); 
-    
+
+	public void updateLatLon(String lat, String lon) {
+		this.lastLatitude = lat;
+		this.lastLongitude = lon;
+		this.save();		
+	}
+
 }
 
