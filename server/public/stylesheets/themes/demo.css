@@ -91,10 +91,10 @@ p {
 }
 
 .topbar {
-    background-color: #222222;
-    background-image: -moz-linear-gradient(center top , #333333, #222222);
+    background-color: #FFB730;
+    background-image: -moz-linear-gradient(center top , #FFB730, #FF7D00);
     background-repeat: repeat-x;
-	color: #404040;
+	color: #FFB730;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 13px;
     font-weight: normal;
@@ -104,4 +104,11 @@ p {
 
 a{
 	color:#FFF;
+	font-size:17px;
+	text-decoration: none;
+	}
+
+a:hover	{
+	color:#DFCFFF;
+	font-weight:700;
 	}
