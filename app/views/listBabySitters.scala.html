@@ -14,7 +14,7 @@
 		
 		@helper.form(action = routes.Application.requestSitter()) {
 			<div class="container_12">
-				<img class="grid_2" src="@routes.Assets.at("images/mugweb.jpg")" title="Reliable babysitters!" />
+				<img class="grid_2" src="@sitter.babySitter.pictureUrl" title="Reliable babysitters!" />
 				<h1 class="grid_10">@sitter.babySitter.firstName @sitter.babySitter.lastName</h1>
 				
 				<h2 class="grid_10">Available from @sitter.startTime to @sitter.endTime</h2>
