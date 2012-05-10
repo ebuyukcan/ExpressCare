@@ -24,3 +24,11 @@ h2.search {
 .ui-timepicker-div .ui_tpicker_second {
 	display:none;
 }
+
+.emergency_price {
+	color: red;
+}
+
+#emergency_price_info {
+	display:none;
+}
