@@ -12,7 +12,7 @@ body {
 }
 
 h1,h2,h3,h4 {
-  font-family: "kulturista-web-1","kulturista-web-2",Serif;
+  font-family: "kulturista-web-1","kulturista-web-2",'Helvetica Neue', Helvetica, Arial, sans-serif, Serif;
 }
 
 h1 {
@@ -28,7 +28,9 @@ h1 {
 }
 
 h2 {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight:normal;
+  font-size:16px;
   width:100%;
   float:left;
   margin: 20px 0  0px 0;
@@ -149,3 +151,12 @@ border-radius: 5px;
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-weight:400;
 	}
+	
+.availability {
+	
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-align: left;
+  font-size:24px;
+  color:#808080;
+  font-weight:400;
+}
