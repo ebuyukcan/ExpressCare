@@ -44,18 +44,16 @@ public class BabySitterAvailable extends Model {
      */
     public static void setRequested(String id) {
         BabySitterAvailable availability = find.byId(Long.parseLong(id));
-        availability.requested = true;
-        availability.save();
-        /*BabySitterAvailable.find.all().get(Integer.parseInt(id)).delete();
+        //availability.requested = true;
+        //availability.save();
+        BabySitterAvailable.find.byId(Long.parseLong(id)).delete();
         BabySitterAvailable bsa = new BabySitterAvailable();
         bsa.id = availability.id;
         bsa.requested = true;
         bsa.endTime = availability.endTime;
         bsa.startTime = availability.startTime;
         bsa.babySitter = availability.babySitter;
-        bsa.save();*/
-        //find.byId(Long.parseLong(id)).requested = true;
-        //find.byId(Long.parseLong(id)).update();
+        bsa.save();
         System.out.println("requested= " + find.byId(Long.parseLong(id)).requested);
     }
     
@@ -65,8 +63,14 @@ public class BabySitterAvailable extends Model {
      */
     public static void setAgreed(String id) {
         BabySitterAvailable availability = find.byId(Long.parseLong(id));
-        availability.agreed = true;
-        availability.save();
+        BabySitterAvailable.find.byId(Long.parseLong(id)).delete();
+        BabySitterAvailable bsa = new BabySitterAvailable();
+        bsa.id = availability.id;
+        bsa.agreed = true;
+        bsa.endTime = availability.endTime;
+        bsa.startTime = availability.startTime;
+        bsa.babySitter = availability.babySitter;
+        bsa.save();
         System.out.println("agreed= " + find.byId(Long.parseLong(id)).agreed);
     }
     
