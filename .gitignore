@@ -1,0 +1,58 @@
+**/*.DS_Store
+client/.DS_Store
+
+# General temp files
+.DS_Store
+*.ser
+*.pyc
+
+# Files related to Play build or usage
+id
+dist
+framework/classes
+framework/test-classes
+framework/tests-results
+framework/out
+framework/play.jar
+framework/src/version
+framework/src/play/version
+framework/tests/test-application/db
+framework/play-*.jar
+framework/docs
+samples-and-tests/*/test-result/
+tmp/
+
+# IDE and editors
+*~
+.idea
+nbproject
+eclipse
+.amateras
+.settings/
+.classpath
+.project
+*.iml
+*.ipr
+*.iws
+atlassian-ide-plugin.xml
+conf/evolutions/default/1.sql
+project/project/
+
+# modules/: exclude except for core modules
+modules/*
+!modules/docviewer
+!modules/crud
+!modules/console
+!modules/grizzly
+!modules/secure
+!modules/testrunner
+
+
+# Joel's changes
+target/*
+
+/logs/**
+/logs/application.log
+
+logs/application.log
+project/target/
