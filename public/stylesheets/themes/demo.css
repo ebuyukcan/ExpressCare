@@ -127,10 +127,10 @@ a:hover	{
 	
 	} */
 	
-a:link,a:visited
+a.topbarclass:link,a.topbarclass:visited
 {
 display:block;
-font-weight:bold;
+font-weight:400;
 color:#FFFF7A;
 background-color:#20A7DF;
 width:120px;
@@ -140,7 +140,7 @@ text-decoration:none;
 -moz-border-radius: 5px;
 border-radius: 5px;
 }
-a:hover,a:active
+a.topbarclass:hover,a.topbarclass:active
 {
 background-color:#00AF00;
 -moz-border-radius: 5px;
