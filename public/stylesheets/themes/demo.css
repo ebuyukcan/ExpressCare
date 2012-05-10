@@ -147,6 +147,20 @@ background-color:#00AF00;
 border-radius: 5px;
 }
 
+.notification
+{
+	display:block;
+	font-weight:400;
+	color:#FFFF7A;
+	background-color:#20A7DF;
+	width:60px;
+	text-align:center;
+	padding:0px;
+	text-decoration:none;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
 .search {
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-weight:400;
@@ -160,7 +174,6 @@ border-radius: 5px;
   color:#808080;
   font-weight:400;
 }
-<<<<<<< HEAD
 
 ul { list-style-type: none; }
 
@@ -175,5 +188,21 @@ ul { list-style-type: none; }
  border-color: #FFB730;
 
 
+
+}
+
+.notify{
+  display: inline;
+  float: left;
+  
+  font-weight:bold;
+
+  padding: 5px 0px 5px 0px;
+  margin-left: 10px;
+  margin-right: 10px;
+  
+  margin-top: 10px;
+  margin-bottom: 10px;
+ 
 
 }
