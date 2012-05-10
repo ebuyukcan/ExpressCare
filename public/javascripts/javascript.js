@@ -25,8 +25,8 @@ function initMap(lat, lon) {
 $(function() {
 	
 	/** Datepickers **/
-	var startAheadHours = 2;
-	var endAheadHours = 4;
+	var startAheadHours = 24;
+	var endAheadHours = 28;
 	
 	var now = new Date();
 	
@@ -105,10 +105,10 @@ function updateHoursAndPrice() {
 	}
 	
 	var difference = (((startDate.getTime() - now.getTime())/ (60 * 60 * 1000)).toFixed(2));
-	if (difference < 3) {
+	if (difference < 20) {
 	/** Emergency case **/
 		var current_price = baseprice;
-		current_price += current_price*(1/difference);
+		current_price += current_price*(1/(difference*0.1));
 		$('#hourly_price').html((1.0*current_price).toFixed(2));
 		$('#hourly_price').addClass("emergency_price");
 		$('#emergency_price_info').show();
