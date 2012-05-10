@@ -111,7 +111,7 @@ p {
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 }
-
+/*
 a{
 	color:#FFF;
 	font-size:17px;
@@ -123,7 +123,25 @@ a:hover	{
 	color:#DFCFFF;
 	font-weight:700;
 	
-	}
+	} */
 	
-	
+a:link,a:visited
+{
+display:block;
+font-weight:bold;
+color:#FFFF7A;
+background-color:#20A7DF;
+width:120px;
+text-align:center;
+padding:4px;
+text-decoration:none;
+-moz-border-radius: 5px;
+border-radius: 5px;
+}
+a:hover,a:active
+{
+background-color:#00AF00;
+-moz-border-radius: 5px;
+	border-radius: 5px;
+}
 	
