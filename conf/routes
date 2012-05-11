@@ -11,6 +11,7 @@ GET		/babysitter							controllers.Application.getBabysitter(id: String)
 # Adding babysitter profile is not currently in our scope, they will be removed
 GET 	/addNewBabysitter					controllers.Application.addNewBabysitter()
 POST	/babysitter							controllers.Application.addBabysitter()
+
 # I'd love to learn to use these routes correctly. However, I could not find any good learning resources :/
 GET		/listBabySitters					controllers.Application.listAvailableBabySitters(latitude ?= "0", longitude ?= "0", start ?= "", end ?= "", mobile ?= "false")
 GET     /request				         	controllers.Application.requestSitter(id ?= "", mobile ?= "false")
@@ -21,6 +22,4 @@ GET     /highpriority                       controllers.Application.emergencyLis
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
-
-
 

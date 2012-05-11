@@ -11,9 +11,9 @@
 	      var options = {timeout:60000};
 	      navigator.geolocation.getCurrentPosition(showLocation, 
 	                                               null,
-	                                               options);
-	   }else{
-	      alert("Sorry, browser does not support geolocation!");
+	                                               options); /* no error handling. We are brave. */
+	   } else {
+/*	      alert("Sorry, browser does not support geolocation!"); */
 	   }
    });
 	$(function() {
@@ -27,8 +27,8 @@
 		
 		$('#startDate').val(start.getDate() + '/' + (start.getMonth()+1) + '/' + start.getFullYear());
 		$('#endDate').val(end.getDate() + '/' + (end.getMonth()+1) + '/' + end.getFullYear());
-		$('#startTime').val(start.getHours() + ':' + start.getMinutes());
-		$('#endTime').val(end.getHours() + ':' + end.getMinutes());
+		$('#startTime').val(start.getHours() + ':' + (start.getMinutes()<10?'0':'') + start.getMinutes());
+		$('#endTime').val(end.getHours() + ':' + (end.getMinutes()<10?'0':'') + end.getMinutes());
    });
    
 	function showLocation(position) {

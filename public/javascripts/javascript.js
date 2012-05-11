@@ -1,4 +1,3 @@
-
 function initMap(lat, lon) {
 		var addresspickerMap = $( "#addresspicker_map" ).addresspicker({
 			regionBias: "fi",
@@ -112,10 +111,10 @@ function updateHoursAndPrice() {
 		/** cast to double before applying tofixed(). Loving the Javascript. **/
 		$('#hourly_price').html((1.0*current_price).toFixed(2));
 		$('#hourly_price').addClass("emergency_price");
-		$('#emergency_price_info').show();
+/*		$('#emergency_price_info').show(); */
 	} else {
 		$('#hourly_price').removeClass("emergency_price");
-		$('#emergency_price_info').hide();
+/*		$('#emergency_price_info').hide(); */
 	}
 	
 	

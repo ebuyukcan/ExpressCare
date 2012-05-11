@@ -11,8 +11,8 @@
 	@for(sitter <- babysitters) {
 		
 		@helper.form(action = routes.Application.requestSitter()) {
-			<div>
-				<img style="width:100%" src="@sitter.babySitter.pictureUrl" title="Reliable babysitters!" />
+			<div style="margin:0.5em">
+				<img style="width:60%" src="@sitter.babySitter.pictureUrl" title="Reliable babysitters!" />
 				<h1>@sitter.babySitter.firstName @sitter.babySitter.lastName</h1>
 				@if(sitter.babySitter.favorited) {
 					<p style="margin-left:0;">
@@ -31,6 +31,7 @@
 				} else {
 					<p>The sitter has already been requested</p> <!-- why are we even showing the already requested sitters?-->
 				}
+				<hr/>
 			</div>
 		}
 		
