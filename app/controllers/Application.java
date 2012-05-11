@@ -124,13 +124,11 @@ public class Application extends Controller
     //TODO Ids for availability are also needed here
     public static Result contactBabysitter(String id)
     {
-//		return ok();
     	return ok(contactBabysitter.render(BabySitterAvailable.findById(Long.parseLong(id))));
     }
     
     public static Result contactBabysitterMobile(String id)
     {
-    	//return ok();
     	return ok(contactBabysitterMobile.render(BabySitterAvailable.findById(Long.parseLong(id))));
     }
 
@@ -143,6 +141,9 @@ public class Application extends Controller
       	//System.out.println("uri= " + request().uri() + " " + request().path() + " " + request().queryString().get("latitude"));
     	BabySitterAvailable bs = BabySitterAvailable.findById(Long.parseLong(id));
         bs.setRequested();
+        
+        Parent p = Parent.find.all().get(0);
+        p.setHasRequested();
     	
     	flash("success", bs.babySitter.firstName + " " + bs.babySitter.lastName + " has been requested. You will be contacted shortly.");
 
@@ -164,5 +165,7 @@ public class Application extends Controller
     	//return ok(listBabySitters.render(BabySitter.find(Double.parseDouble(latitude), Double.parseDouble(longitude), startDate, endDate)));
     	return redirect("/");
     }
+    
+    
 
 }
