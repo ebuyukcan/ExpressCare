@@ -297,3 +297,9 @@ textarea[contenteditable] {-webkit-appearance: none;}
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; }
 }
+
+.header
+{
+	background-color:#FFB730;
+	text-decoration:none;	
+}
