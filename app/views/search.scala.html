@@ -46,14 +46,6 @@
 
             <p class="grid_6 omega">&nbsp;</p>
 
-
-<!--
-		    <label for="startTime" class="grid_1">start</label>
-            <input id="startTime" class="grid_3" name="start" type="text" size="20" />
-
-            <label for="endTime"class="grid_1">end</label>
-            <input id="endTime" name="end" class="grid_3" type="text" size="20"/>
-    --> 
 			<span style="display:none;">
 			<label>Address : </label> <input id="addresspicker_map" />   <br/>
 			<label>Locality: </label> <input id="locality" disabled=disabled /> <br/>
@@ -81,6 +73,9 @@
 
 <script type="text/javascript">
 	initMap(@parent.lastLatitude, @parent.lastLongitude);
+	if (@parent.hasRequested == true) {
+		$('#notify_icon').show();
+	}
 </script>
 
 }

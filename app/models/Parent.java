@@ -28,6 +28,8 @@ public class Parent extends Model {
     @Formats.DateTime(pattern="yyyy-MM-dd")
     public Date birthday;
     
+    public boolean hasRequested;
+    
     public String lastLatitude;
     public String lastLongitude;
     
@@ -40,6 +42,11 @@ public class Parent extends Model {
 		this.lastLatitude = lat;
 		this.lastLongitude = lon;
 		this.save();		
+	}
+	
+	public void setHasRequested() {
+		this.hasRequested = true;
+		this.save();
 	}
 
 }
