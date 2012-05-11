@@ -22,13 +22,26 @@ public class Application extends Controller
 		if (end.equals("")) end = "2012/05/10";
 		Date startDate = null;
 		Date endDate = null;
+		Parent p = Parent.find.all().get(0);
 		DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+// FIXME FIXME
+		boolean loadStart = false;
+		boolean loadEnd = false;
 		try {
 			startDate = formatter.parse(start);
 			Logger.debug("Parsed the start date! " + start);
 		} catch (Exception e) {
 			Logger.error("Failed to parse start date");
-			startDate = new Date();
+			 startDate = new Date();
+//			loadStart = true;
+		}
+		if (loadStart) {
+			try {
+				startDate = formatter.parse(p.lastStart);
+				Logger.error("set start to: " + startDate);			
+			} catch (Exception e) {
+				Logger.error("failed to set start");
+			} 
 		}
 
 		try {
@@ -36,8 +49,28 @@ public class Application extends Controller
 			Logger.debug("Parsed the end date! " + end);
 		} catch (Exception e) {
 			Logger.error("Failed to parse end date");
+//			endDate = formatter.parse(p.lastEnd);
+			Logger.error("set end to: " + endDate);
 			endDate = new Date();
+//			loadEnd = true;
 		}
+
+		if (loadEnd) {
+			try {
+				endDate = formatter.parse(p.lastEnd);
+				Logger.error("set end to: " + endDate);			
+			} catch (Exception e) {
+				Logger.error("failed to set end");
+			}
+		}
+/*
+		Parent.find.all().get(0).delete();
+		p = new Parent();
+		p.id = 1L;
+		p.lastStart = formatter.format(startDate);
+		p.lastEnd = formatter.format(endDate);
+		p.save();*/
+//		p.setLastDates(formatter.format(startDate), formatter.format(endDate));
 		
 		if (!latitude.equals("0") && !longitude.equals("0")) {
 			// Update the user's model to include the latest lat & lon
@@ -46,7 +79,7 @@ public class Application extends Controller
 			// the cache or something? We should have started with the Play 1.2.x version instead of this 
 			// "brand new, not so polished" 2.x...
 			Parent.find.all().get(0).delete();
-			Parent p = new Parent();
+			p = new Parent();
 			p.id = 1L;
 			p.lastLatitude = latitude;
 			p.lastLongitude = longitude;
@@ -141,9 +174,15 @@ public class Application extends Controller
       	//System.out.println("uri= " + request().uri() + " " + request().path() + " " + request().queryString().get("latitude"));
     	BabySitterAvailable bs = BabySitterAvailable.findById(Long.parseLong(id));
         bs.setRequested();
-        
-        Parent p = Parent.find.all().get(0);
-        p.setHasRequested();
+
+        Parent p = null;
+        try {
+        	p = Parent.find.all().get(0);
+        } catch (Exception e) {
+        	// NOOP
+        }
+        if (p != null)
+        	p.setHasRequested();
     	
     	flash("success", bs.babySitter.firstName + " " + bs.babySitter.lastName + " has been requested. You will be contacted shortly.");
 

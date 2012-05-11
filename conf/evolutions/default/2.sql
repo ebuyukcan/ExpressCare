@@ -12,7 +12,7 @@ insert into baby_sitter_available (id,baby_sitter_id,start_time,end_time, reques
 insert into baby_sitter_available (id,baby_sitter_id,start_time,end_time, requested, agreed) values (3, 3, '2012-05-01 12:12:12', '2012-05-14 12:12:12', false, false);
 insert into baby_sitter_available (id,baby_sitter_id,start_time,end_time, requested, agreed) values (4, 4, '2012-05-13 12:12:12', '2012-06-12 12:12:12', false, false);
 
-insert into parent (id,first_name,last_name,birthday,last_latitude,last_longitude,has_requested) values (1,'Testi','Kayttaja',NOW(), 60.180801306334295, 24.832318727734446, false);
+insert into parent (id,first_name,last_name,birthday,last_latitude,last_longitude,has_requested,last_start,last_end) values (1,'Testi','Kayttaja',NOW(), 60.180801306334295, 24.832318727734446, false, NOW(), NOW());
 
 
 # --- !Downs

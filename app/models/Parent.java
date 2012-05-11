@@ -33,6 +33,9 @@ public class Parent extends Model {
     public String lastLatitude;
     public String lastLongitude;
     
+    public String lastStart;
+    public String lastEnd;
+    
     /**
      * Generic query helper for entity Computer with id Long
      */
@@ -45,7 +48,18 @@ public class Parent extends Model {
 	}
 	
 	public void setHasRequested() {
-		this.hasRequested = true;
+		// Some crappy error handling 
+		try {
+			this.hasRequested = true;
+			this.save();
+		} catch (Exception e) {
+			
+		}
+	}
+
+	public void setLastDates(String start, String end) {
+		this.lastStart = start;
+		this.lastEnd = end;
 		this.save();
 	}
 
