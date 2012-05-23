@@ -68,3 +68,14 @@ h2.search {
 #calendar .free:hover {
 	opacity:1;
 }
+
+#calendar p {
+	float:right;
+	width:50%;
+}
+
+#calendar img {
+	position: relative;
+	float:left;
+	padding-top:0.4em;
+}
