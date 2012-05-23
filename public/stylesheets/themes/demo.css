@@ -6,7 +6,7 @@ body {
   font-style: normal;
   font-weight: 300;
   background-image:url(../../images/backgr2.png);
-  background-repeat:no-repeat;
+  background-repeat:repeat-y;
   background-position:center;
 
 }
