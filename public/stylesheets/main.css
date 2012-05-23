@@ -36,3 +36,35 @@ h2.search {
 #notify_icon {
 	display:none;
 }
+
+
+#calendar {
+	width:100%;
+}
+
+#calendar th,td {
+	text-align:left;
+	border-bottom: 1px solid #c0c0c0;
+	padding-left:0.7em;
+	padding-top:0.3em;
+	padding-bottom:0.3em;
+	padding-right:0.7em;
+}
+
+#calendar .time {
+	padding-left: 0.1em;
+}
+
+#calendar .free {
+	background-color: #00FF1A;
+	opacity:0.65;
+}
+
+#calendar .busy {
+	background-color: #E0E0E0;
+	opacity:0.65;
+}
+
+#calendar .free:hover {
+	opacity:1;
+}
